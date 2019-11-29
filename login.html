@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>NewHomes</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+<!--------------------Navigation bar----------->
+<header>
+    <a class="nav-brand" href="#top"><b>NewHomes</b></a>
+    <nav>
+        <ul class='nav-links'>
+        <li><a href="#">Adopter</a></li>
+        <li><a href="#">Terms and conditions</a></li>
+        <li><a href="#">Contacts</a></li>
+        </ul>
+    </nav>  
+    <a class="button" href="#"><button>Sign In</button> </a>
+</header>
+<!-----------------Log in card-------------->
+<div class="login-box">
+    <div>
+        <button class="button register-button" style="color="><a href="#">Register</a></button>
+        <button class="button login-button"><a href="#">Log In</a></button>
+    </div>
+    <form action="http://localhost:3000/register" method="post" id="addUserForm">
+        <input type="text" name="name" placeholder="Username" required>
+        <input type="password" name="passwd" placeholder="Password" required>
+        <button class="signin-button" type="login">Log In</button>
+      </form>
+</div>
+
+</body>
+</html>
