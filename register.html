@@ -5,7 +5,7 @@
     <title>NewHomes</title> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="registerStyle.css">
 </head>
 <body>
 <!--------------------Navigation bar----------->
@@ -22,9 +22,9 @@
 </header>
 <!-----------------Log in card-------------->
 <div class="login-box">
-    <div>
-        <button class="button register-button" style="color="><a href="#">Register</a></button>
-        <button class="button login-button"><a href="#">Log In</a></button>
+    <div class="button-container">
+        <button class="register-button" style="color="><a href="#">Register</a></button>
+        <button class="login-button"><a href="#">Log In</a></button>
     </div>
     <form action="http://localhost:3000/register" method="post" id="addUserForm">
         <input type="text" name="name" placeholder="Username" required>
