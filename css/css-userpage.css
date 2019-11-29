@@ -237,6 +237,11 @@ footer{
 
 @media (max-width: 880px) {
 
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+
     .footer-distributed .footer-left,
     .footer-distributed .footer-center,
     .footer-distributed .footer-right{
