@@ -10,7 +10,7 @@
 <body>
 <!--------------------Navigation bar----------->
 <header>
-    <a class="nav-brand" href="#top"><b>NewHomes</b></a>
+    <a class="nav-brand" href="index.html"><b>NewHomes</b></a>
     <nav>
         <ul class='nav-links'>
         <li><a href="#">Adopter</a></li>
@@ -18,18 +18,18 @@
         <li><a href="#">Contacts</a></li>
         </ul>
     </nav>  
-    <a class="button" href="#"><button>Sign In</button> </a>
+    <a class="button" href="login.html"><button>Sign In</button> </a>
 </header>
 <!-----------------Log in card-------------->
 <div class="login-box">
     <div class="button-container">
-        <button class="register-button" style="color="><a href="#">Register</a></button>
-        <button class="login-button"><a href="#">Log In</a></button>
+        <button class="register-button"><a href="register.html">Register</a></button>
+        <button class="login-button"><a href="login.html">Sign In</a></button>
     </div>
-    <form action="http://localhost:3000/register" method="post" id="addUserForm">
+    <form action="http://localhost:5500/register" method="post" id="addUserForm">
         <input type="text" name="name" placeholder="Username" required>
         <input type="password" name="passwd" placeholder="Password" required>
-        <button class="signin-button" type="login">Log In</button>
+        <button class="signin-button" type="login">Sign In</button>
       </form>
 </div>
 

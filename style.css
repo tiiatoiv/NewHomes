@@ -71,6 +71,7 @@ button:hover {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    width: 200px;
 }
 
 .container {
@@ -79,9 +80,6 @@ button:hover {
     height: 300px;
 }
 
-.search {
-    margin: 10px;
-}
 
 main {
     width: 70%;
