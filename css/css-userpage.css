@@ -131,8 +131,8 @@ main {
 }
 
 .topmargin {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 aside {
@@ -202,7 +202,7 @@ li {
 
 .infoch {
     padding: 9px 25px;
-    background-color: #FFB6C1;
+    background-color: rgba(255, 182, 193, 0.59);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -215,7 +215,7 @@ li {
 
 .profilebutton {
     padding: 9px 25px;
-    background-color: #FFB6C1;
+    background-color: rgba(255, 182, 193, 0.59);
     border: none;
     border-radius: 50px;
     cursor: pointer;
