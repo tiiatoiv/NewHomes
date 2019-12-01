@@ -16,6 +16,7 @@ const getDog = async () => {
               <img src="${dog.filename}" class="resp">
           </figure>
           <p>Dob: ${dog.dob}</p>
+          <p>Location: ${dog.location}</p>
           <p>Owner: ${user.username}</p>
       </li>
       `;

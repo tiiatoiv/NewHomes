@@ -88,10 +88,21 @@ main {
 aside {
     width: 30%;
 }
+
+
 /*----------Dog display----------*/
 h1 {
     font-size: 30px ;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 
 /*----------Footer-----------*/
 footer{
@@ -136,18 +147,17 @@ footer{
 
 .footer-distributed .footer-center i {
     background-color:  #50575c;
-    font-size:30px;
+    font-size:20px;
     width: 38px;
     height: 38px;
     border-radius: 50%;
     text-align: center;
     line-height: 20px;
-    margin: 10px 10px;
     vertical-align: middle;
 }
 
 .footer-distributed .footer-center i.fa-envelope {
-    font-size: 20px;
+    font-size: 15px;
     line-height: 20px;
 }
 
