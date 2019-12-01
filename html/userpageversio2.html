@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <title>NewHomes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link rel="stylesheet" href="css-userpage.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../css/css-userpage.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +17,6 @@
     <nav>
         <ul class='nav-links'>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Adopt</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">FAQ (info)</a></li>
         </ul>
@@ -24,24 +24,41 @@
     <a href="#"><button>Sign Out</button> </a>
 </header>
 
-<!------Info---------->
-<main>
-    <h1 style="text-align: center">New Homes</h1>
+<!-----------------------User info----------------->
+<div class="topmargin">
+    <!--  <h1 style="text-align: center">Profile</h1> -->
     <div class="row">
-        <div class="col-2"></div>
+
+        <div class="col-4 userborder">
+            <ul>
+            <li class="ulhorizontal"><a class="profilebutton" href="#">Edit profile</a></li>
+            <li class="ulhorizontal"><a class="profilebutton" href="#">Delete profile</a></li>
+            </ul>
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="width: 40%" class="center">
+            <h3>Name</h3>
+            <p>User name got from the database</p>
+            <h3>Email</h3>
+            <p>user.email@email.fi</p>
+            <h3>Something</h3>
+            <p>The user page is only shown, if the user is logged in. Otherwise there should be shown the login page.</p>
+        </div>
+
         <div class="col-8">
-            <h3>What are we?</h3>
-            <p>New Homes is a web platform for finding a best possible new home for your best friend - or to give one to someone! New Homes is user friendly and easy to use site, where by creating a profile you can connect with other dog lovers.</p>
-            <h3>How to find a dog</h3>
-            <p>If you are looking for to adopt a dog, you need to create an account first. Once you're in, you are able to search (with different criteria) a new dog-friend from our platform. If you find a pontential one, send a connection request to the owner, and just wait. New Homes is a web platform for finding a best possible new home for your best friend - or to give one to someone! New Homes is user friendly and easy to use site, where by creating a profile you can connect with other dog lovers.</p>
-            <h3>What are we?</h3>
-            <p>New Homes is a web platform for finding a best possible new home for your best friend - or to give one to someone! New Homes is user friendly and easy to use site, where by creating a profile you can connect with other dog lovers.</p>
+            <ul class="center">
+                <li class="ulhorizontal"><h4>My posts</h4></li>
+                <li class="ulhorizontal"><a class="infoch" href="#">Create a post</a></li>
+            </ul>
+            <ul>
+                <p>No posts yet... Here will be created a list of own posts from database.<br><br><br><br><br><br><br><br></p></ul>
+            <ul class="center">
+                <li class="ulhorizontal"><h4>Liked dogs</h4></li>
+            </ul>
+            <ul>
+                <p>No posts yet... Here will be created a list of liked posts from database.</p></ul>
 
         </div>
-        <div class="col-2">
-        </div>
     </div>
-</main>
+</div>
 
 <!-----------------------Footer----------------->
 
