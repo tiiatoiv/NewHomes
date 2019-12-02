@@ -13,10 +13,63 @@ const getAllDogs = async () => {
     }
   };
 
+  const getDog = async (params) => {   //get dog to specific page
+    try {
+      const [rows] = await promisePool.execute(
+          'SELECT * FROM dog WHERE id = ?;',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);       //return error
+      return {error: 'error in database query'};
+    }
+  };
+  
+  const deleteDog = async (params) => {       //delete dog from admin and owner
+    try {
+      const [rows] = await promisePool.execute(
+          'DELETE FROM dog WHERE id = ?;',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+      return {error: 'error in database query'};
+    }
+  };
+  
+  const addDog = async (params) =>{  //user adds their dog
+    try {
+      const [rows] = await promisePool.execute(
+          'INSERT INTO dog (name, dob, owner, location, filename) VALUES (?,?,?,?,?);',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+      return {error: 'error in database query'};
+    }
+  }
+  
+  const updateDog = async (params) =>{  //user or admin can update 
+    try {
+      const [rows] = await promisePool.execute(
+          'UPDATE dog SET name = ?, dob = ?,  owner = ?, location = ? WHERE id = ?;',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+      return {error: 'error in database query'};
+    }
+  }
+  
+
   module.exports = {
     getAllDogs,
-    //getDog,
-    //addDog,
-    //updateDog,
-    //deleteDog
+    getDog,
+    addDog,
+    updateDog,
+    deleteDog
   };
