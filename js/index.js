@@ -1,13 +1,19 @@
 'use strict';
 
-const url = 'http://localhost:5500  '; // change url when uploading to server
+const url = 'http://localhost:5500'; // change url when uploading to server
 
 const ul = document.querySelector('ul');  //select ul element in index.html
+const breed = document.getElementById('breed');
+const size = document.getElementById('size');
+
+const getBreed = ( () => {
+
+});
 
 const getDog = async () => {
     const response = await fetch(url + '/index');
     const dogs = await response.json();
-    dogs.forEach( (dog) => {
+    dogs.forEach( async (dog) => {
       const user = await getUser(dog.owner);
       ul.innerHTML += `
       <li>
@@ -28,3 +34,5 @@ const getDog = async () => {
     const user = await response.json();
     return user;
   };
+
+  getDog();
