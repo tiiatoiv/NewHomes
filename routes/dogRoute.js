@@ -7,7 +7,7 @@ const dogController = require('../controllers/dogController');
 
 router.get('/', dogController.dog_list_get);  //get all the dog on main page
 
-//router.get('/:id', dogController.dog_get);     //get specific dog
+router.get('/:id', dogController.dog_get);     //get specific dog
 
 //router.post('/', upload.single('dog'), dogController.dog_create_post);
 

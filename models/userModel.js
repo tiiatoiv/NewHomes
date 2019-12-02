@@ -2,6 +2,10 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
+//This file contains functions to update the users table in the database
+//Fetch info, update and delete
+
+//get all users from database
 const getAllUsers = async () => {
     try {
         const [rows] = await promisePool.execute('SELECT * FROM users');
@@ -12,6 +16,7 @@ const getAllUsers = async () => {
     }
 };
 
+//get a single user info from database
 const getUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
@@ -25,6 +30,7 @@ const getUser = async (params) => {
     }
 };
 
+//add a new user into database
 const addUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
@@ -38,7 +44,8 @@ const addUser = async (params) => {
     }
 };
 
-const updateUser = async (params) => {
+//update users info
+/**const updateUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
             'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?;',
@@ -48,8 +55,9 @@ const updateUser = async (params) => {
     catch (e) {
         console.log('error', e.message);
     }
-};
+}; */
 
+//delete user from database
 const deleteUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
@@ -66,4 +74,5 @@ module.exports = {
     getAllUsers,
     getUser,
     addUser,
+    deleteUser
 };
