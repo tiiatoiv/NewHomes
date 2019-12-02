@@ -7,7 +7,7 @@ const port = 5500;
 const dogRoute = require('./routes/dogRoute');
 app.use(cors());
 app.use('/index', dogRoute);
-app.use('/index', dogRoute);
+app.use('/user', userRoute);
 
 
 app.listen(port, () => console.log(`App listens on port ${port}!`));
