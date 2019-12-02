@@ -15,7 +15,7 @@ app.use(express.urlencoded({extedended: true}));
 //app.use('/thumbnails', express.static('thumbnails'));
 
 app.use('/index', dogRoute);
-app.use('/user', userRoute);
+app.use('/user/', userRoute);
 
 
 app.listen(port, () => console.log(`App listens on port ${port}!`));

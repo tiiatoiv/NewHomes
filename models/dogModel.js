@@ -5,7 +5,8 @@ const promisePool = pool.promise();
 
 const getAllDogs = async () => {
     try {
-      const [rows] = await promisePool.execute('SELECT dog.*, users.username as ownername FROM dog JOIN users ON dog.owner = users.username;');
+      const [rows] = await promisePool.execute(
+        'SELECT dog.*, ROUND(DATEDIFF(CURRENT_DATE ,dob)/365) AS age, users.username as ownername FROM dog JOIN users ON dog.owner = users.username;');
       return rows;
     } catch (e) {
       console.log('error', e.message);

@@ -4,7 +4,7 @@ const dogModel = require('../models/dogModel');
 //const resize = require('../utils/resize');
 //const imageMeta = require('../utils/imageMeta');
 
-const dog_list_get = async (req, res) => {  //get all list to the mian page
+const dog_list_get = async (req, res) => {  //get all list to the main page
   const dogs = await dogModel.getAllDogs();
   await res.json(dogs);
 };
@@ -19,11 +19,11 @@ const dog_create_post = async (req, res) => {
 
     const params = [
       req.body.name,
-      req.body.dob,
+      req.body.age,
       req.body.owner,
       req.body.location,
       req.file.filename,
-      coords
+      //coords
     ];
     const response = await dogModel.addDog(params);
     await res.json(response);
@@ -47,7 +47,7 @@ const dog_delete = async (req, res) => {   //user or admin deletes dog
 const dog_update_put = async(req,res) => {  //user or admin updates dog
   const params = [
     req.body.name,
-    req.body.dob,
+    req.body.age,
     req.body.location, 
     req.body.owner,
   ]
