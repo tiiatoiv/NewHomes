@@ -13,29 +13,63 @@ const getAllDogs = async () => {
     }
   };
 
-const getDog = async () => {
+  const getDog = async (params) => {   //get dog to specific page
     try {
-        const [rows] = await promisePool.execute('SELECT dog.*, users.username as ownername FROM dog JOIN users ON dog.owner = users.username WHERE id = ?;');
-        return rows;
+      const [rows] = await promisePool.execute(
+          'SELECT * FROM dog WHERE id = ?;',
+          params,
+      );
+      return rows;
     } catch (e) {
-        console.log('error', e.message);
-        return {error: 'error in database query'};
+      console.log('error', e.message);       //return error
+      return {error: 'error in database query'};
     }
-};
-
-const getUsersDogs = async () => {
+  };
+  
+  const deleteDog = async (params) => {       //delete dog from admin and owner
     try {
-        const [rows] = await promisepool.execute('');
-        return [rows];
+      const [rows] = await promisePool.execute(
+          'DELETE FROM dog WHERE id = ?;',
+          params,
+      );
+      return rows;
     } catch (e) {
-        console.log('error')
+      console.log('error', e.message);
+      return {error: 'error in database query'};
     }
-}
+  };
+  
+  const addDog = async (params) =>{  //user adds their dog
+    try {
+      const [rows] = await promisePool.execute(
+          'INSERT INTO dog (name, dob, owner, location, filename) VALUES (?,?,?,?,?);',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+      return {error: 'error in database query'};
+    }
+  }
+  
+  const updateDog = async (params) =>{  //user or admin can update 
+    try {
+      const [rows] = await promisePool.execute(
+          'UPDATE dog SET name = ?, dob = ?,  owner = ?, location = ? WHERE id = ?;',
+          params,
+      );
+      return rows;
+    } catch (e) {
+      console.log('error', e.message);
+      return {error: 'error in database query'};
+    }
+  }
+  
 
   module.exports = {
     getAllDogs,
     getDog,
-    //addDog,
-    //updateDog,
-    //deleteDog
+    addDog,
+    updateDog,
+    deleteDog
   };
