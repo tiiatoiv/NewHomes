@@ -2,17 +2,17 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-//const upload = multer({dest: 'uploads/'});
+const upload = multer({dest: 'uploads/'});
 const dogController = require('../controllers/dogController');
 
 router.get('/', dogController.dog_list_get);  //get all the dog on main page
 
-//router.get('/:id', dogController.dog_get);     //get specific dog
+router.get('/:id', dogController.dog_get);     //get specific dog
 
 //router.post('/', upload.single('dog'), dogController.dog_create_post);
 
-//router.put('/', dogController.dog_update_put);  //modified dog
+router.put('/', dogController.dog_update_put);  //modified dog
 
-//router.delete('/:id', dogController.dog_delete);
+router.delete('/:id', dogController.dog_delete);  //delete dog
 
 module.exports = router;
