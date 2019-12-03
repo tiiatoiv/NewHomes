@@ -13,9 +13,8 @@
     <a class="nav-brand" href="index.html"><b>NewHomes</b></a>
     <nav>
         <ul class='nav-links'>
-        <li><a href="#">Adopter</a></li>
-        <li><a href="#">Terms and conditions</a></li>
-        <li><a href="#">Contacts</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">FAQs</a></li>
         </ul>
     </nav>  
     <a class="button" href="#"><button>Sign In</button> </a>
@@ -27,13 +26,13 @@
         <button class="login-button"><a href="login.html">Sign In</a></button>
     </div>
     <form action="http://localhost:5500/user" method="post" id="addUserForm">
-        <input type="text" name="name" placeholder="Username" required>
+        <input id="username" type="text" name="name" placeholder="Username" required>
         <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="passwd" placeholder="Password" required>
-        <input type="password" name="passwd" placeholder="Retype password" required>
+        <input id="password" type="password" name="passwd" placeholder="Password" required>
+        <input id="password-retype" type="password" name="passwd-retype" placeholder="Retype password" required>
         <button class="submit-button" type="submit">Submit</button>
-      </form>
+    </form>
 </div>
-<script src="./js/register.js"></script>
+<script src="../js/register.js"></script>;
 </body>
 </html>
