@@ -204,6 +204,12 @@ li {
 
 }
 
+ul.doglist li{
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+}
+
 .infoch {
     padding: 9px 25px;
     background-color: rgba(255, 182, 193, 0.59);

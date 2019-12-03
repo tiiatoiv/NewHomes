@@ -28,35 +28,30 @@
 <div class="topmargin">
     <!--  <h1 style="text-align: center">Profile</h1> -->
     <div class="row">
-
-        <div class="col-4 userborder">
+        <div class="col-4"><br>
+            <h4>My profile</h4><br><br>
+        <div class="userborder"><br>
             <ul>
             <li class="ulhorizontal"><a class="profilebutton" href="#">Edit profile</a></li>
             <li class="ulhorizontal"><a class="profilebutton" href="#">Delete profile</a></li>
-            </ul>
-
+            </ul><br>
+            <p>Logged in:</p>
             <ul id="userinfolist">
 
             </ul>
+            <p>Right now this is hardcoded to show admin, this needs to be changed to show the current logged in user.
+            <br><br>My posts list on the left shows currenty dogs, who's owner is admin. This needs to be changen aswell.</p>
 
-            <!--<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="width: 40%" class="center">
-            <h3>Name</h3>
-            <p>User name got from the database</p>
-            <h3>Email</h3>
-            <p>user.email@email.fi</p>
-            <h3>Something</h3>
-            <p>The user page is only shown, if the user is logged in. Otherwise there should be shown the login page.</p>
-       -->
-
+        </div>
         </div>
 
         <div class="col-8">
             <ul class="center">
                 <li class="ulhorizontal"><h4>My posts</h4></li>
-                <li class="ulhorizontal"><a class="infoch" href="/NewHomes/html/createpost.html">Create a post</a></li>
+                <li class="ulhorizontal center"><a class="infoch" href="/NewHomes/html/createpost.html">Create a post</a></li>
             </ul>
 
-            <ul id="mydogslist"></ul>
+            <ul id="mydogslist" class="doglist"></ul>
 
               <ul class="center">
                 <li class="ulhorizontal"><h4>Liked dogs</h4></li>

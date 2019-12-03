@@ -20,7 +20,7 @@ const getUser = async (id) => {
       //  const user = await getUser(dog.owner);
         uluserinfo.innerHTML += `
       <li>
-          <h2>User: ${user.username}</h2>
+          <h2>Username: ${user.username}</h2>
           <p>Email: ${user.email}</p>
       </li>
       `;
@@ -33,7 +33,7 @@ getUser();
 const getDog = async () => {
     const response = await fetch(url + '/dog');
     const dogs = await response.json();
-    const ownerpage = "randomuser";
+    const ownerpage = "admin";
     dogs.forEach( async (dog) => {
         if(dog.owner==ownerpage) {
         //const user = await getUser(dog.owner);

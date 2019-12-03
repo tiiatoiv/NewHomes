@@ -1,5 +1,6 @@
 .idea
 uploads/
+.env
 
 gs
 logs
