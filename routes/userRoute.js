@@ -5,9 +5,9 @@ const multer = require('multer');
 //const upload = multer({dest: 'uploads/'});
 const userController = require('../controllers/userController');
 
-router.get('/', userController.user_list_get);  //get all the dog on main page
+router.get('/', userController.user_list_get);  //get all of the users
 
-router.get('/:id', userController.user_get);
+router.get('/:id', userController.user_get); //get certain user
 
 router.post('/', userController.user_create_account); //put a new user into database
 

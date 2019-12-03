@@ -232,7 +232,7 @@ li {
 
 /*----------Footer-----------*/
 footer{
-    <!--position: fixed;-->
+<!--position: fixed;-->
     bottom: 0;
 }
 
@@ -244,7 +244,7 @@ footer{
 .footer-distributed{
     box-sizing: border-box;
     text-align: left;
-  /*  font: 16px; */
+    /*  font: 16px; */
     background-color: #FFB6C1;
 }
 
@@ -303,14 +303,14 @@ footer{
 
 @media (max-width: 880px) {
 
-        .column, input[type=submit] {
-            width: 100%;
-            margin-top: 0;
-        }
-        .col-4, input[type=submit] {
-            width: 100%;
-            margin-top: 0;
-        }
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+    .col-4, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
 
     .footer-distributed .footer-left,
     .footer-distributed .footer-center,

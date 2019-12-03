@@ -20,8 +20,9 @@ const getAllUsers = async () => {
 const getUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM users WHERE id = ?;',
-            params,
+            //'SELECT * FROM users WHERE id = 1;',
+            'SELECT username, email FROM users WHERE users.id = 2',
+        params,
         );
         return rows;
     } catch (e) {

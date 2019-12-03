@@ -9,20 +9,19 @@ const dog_list_get = async (req, res) => {  //get all list to the main page
   await res.json(dogs);
 };
 
+const dog_mylist_get = async (req, res) => {  //get all list to the main page
+  const dogs = await dogModel.getMyDogs();
+  await res.json(dogs);
+};
+
 const dog_create_post = async (req, res) => {
   try{
-    //create thumbnail
-    //await resize.makeThumbnail(req.file.path,'thumbnails/' + req.file.filename, {width: 160, height: 160});
-    // get coordinates
-    //const coords = await imageMeta.getCoordinates(req.file.path);
-    //console.log('coords', coords);
-
     const params = [
       req.body.name,
-      req.body.age,
+      req.body.dob,
       req.body.owner,
-      req.body.location,
-      req.file.filename,
+     // req.body.location,
+     // req.file.filename,
       //coords
     ];
     const response = await dogModel.addDog(params);
@@ -57,6 +56,7 @@ const dog_update_put = async(req,res) => {  //user or admin updates dog
 
 module.exports = {
     dog_list_get,
+    dog_mylist_get,
     dog_create_post,
     dog_get,
     dog_delete,

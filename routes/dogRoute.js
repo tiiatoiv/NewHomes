@@ -9,7 +9,11 @@ router.get('/', dogController.dog_list_get);  //get all the dog on main page
 
 router.get('/:id', dogController.dog_get);     //get specific dog
 
+router.get('/:owner', dogController.dog_mylist_get);
+
 //router.post('/', upload.single('dog'), dogController.dog_create_post);
+
+router.post('/', dogController.dog_create_post);
 
 router.put('/', dogController.dog_update_put);  //modified dog
 
