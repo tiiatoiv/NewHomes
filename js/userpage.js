@@ -29,11 +29,15 @@ const getUser = async (id) => {
 getUser();
 
 
-const getDog = async (owner) => {
-    const response = await fetch(url + '/index/' + owner);
+//build ul element with dog attribute
+const getDog = async () => {
+    const response = await fetch(url + '/dog');
     const dogs = await response.json();
+    const ownerpage = "randomuser";
     dogs.forEach( async (dog) => {
+        if(dog.owner==ownerpage) {
         //const user = await getUser(dog.owner);
+        const breed = await getBreed(dog.breed);
         ul.innerHTML += `
       <li>
           <h2>${dog.name}</h2>
@@ -41,13 +45,20 @@ const getDog = async (owner) => {
               <img src="${dog.filename}" class="resp">
           </figure>
           <p>Age: ${dog.age}</p>
+          <p>Size: ${breed.size}</p>
           <p>Owner: ${dog.owner}</p>
           <p>Location: ${dog.location}</p>
       </li>
-      `;
+      `};
     })
 };
 
+//get related breed
+const getBreed = async (id) => {
+    const response = await fetch(url + '/breed/' + id);
+    const breed = await response.json();
+    return breed;
+};
 getDog();
 
 /*const getUser = async () => {

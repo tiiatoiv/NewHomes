@@ -17,7 +17,8 @@ const getAllDogs = async () => {
 const getMyDogs = async () => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT ROUND(DATEDIFF(CURRENT_DATE ,dob)/365) AS age, users.username as ownername FROM dog JOIN users ON dog.owner = users.username WHERE dog.owner = randomuser;');
+        'SELECT dog.*, ROUND(DATEDIFF(CURRENT_DATE ,dob)/365) AS age, dogtypes.size FROM dog JOIN dogtypes ON dog.breed = dogtypes.type WHERE owner = admin;');
+        //        'SELECT ROUND(DATEDIFF(CURRENT_DATE ,dob)/365) AS age, users.username as ownername FROM dog JOIN users ON dog.owner = users.username WHERE dog.owner = randomuser;');
     return rows;
   } catch (e) {
     console.log('error', e.message);
@@ -54,7 +55,7 @@ const getMyDogs = async () => {
   const addDog = async (params) =>{  //user adds their dog
     try {
       const [rows] = await promisePool.execute(
-          'INSERT INTO dog (id, name, dob, breed, owner, location, filename) VALUES (,?,?,,?,,);',
+          'INSERT INTO dog (name, dob, breed, owner, location, filename) VALUES (?,?,?,?,?,?);',
           params,
       );
       return rows;

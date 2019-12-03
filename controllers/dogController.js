@@ -19,16 +19,17 @@ const dog_create_post = async (req, res) => {
     const params = [
       req.body.name,
       req.body.dob,
+      req.body.breed,
       req.body.owner,
-     // req.body.location,
-     // req.file.filename,
+      req.body.location,
+      req.file.filename,
       //coords
     ];
     const response = await dogModel.addDog(params);
     await res.json(response);
 } catch (e){
-  console.log('exif error', e);
-  res.status(400).json({message: 'error'});
+  console.log('exif error controller issues wtf wtf', e);
+  res.status(400).json({message: 'error wtf controller issues'});
 }};
 
 const dog_get = async (req, res) => {  // get dog from user's input id

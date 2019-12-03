@@ -31,19 +31,20 @@
         <h3>Add post</h3>
     <p>Here you can create a new post of your loved friend, who is in a need of a new good home.
     <br>Please provide all information of the dog.</p><br>
-        <form action="http://localhost:5500/index" method="post" class="light-border center" id="addDogForm">
-            <p>Dog's name</p>
+        <form action="http://localhost:5500/dog" method="post" class="light-border center" id="addDogForm">
             <input class="light-border center" type="text" name="name" placeholder="Name" required>
             <p>Date of Birth</p>
-            <input class="light-border center" type="date" name="dob" placeholder="dob" required>
-           <!-- <select class="light-border add-owner" name="owner" required>
-                <option value="">Select owner</option>
-            </select>-->
-            <p>Owner</p>
-            <input class="light-border center" type="text" name="owner" placeholder="your username" required>
+            <input class="light-border center" type="text" name="dob" placeholder="dob" required>
+           <!-- <input class="light-border center" type="date" name="dob" placeholder="dob" required>-->
+            <select class="light-border breed-list search" name="breed"></select>
+            <select class="light-border users-list search" name="owner"></select>
+            <input class="light-border center" type="text" name="location" placeholder="City" required>
+            <input class="light-border" type="file" name="file">
 <br><br><br><br>
             <button class="light-border center" type="submit">Save</button><br>
         </form>
+
+
         </div>
         <!--
 
