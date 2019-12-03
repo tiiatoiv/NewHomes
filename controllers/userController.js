@@ -13,6 +13,7 @@ const user_get = async (req, res) => {
 };
 
 const user_create_account = async (req, res) => {
+    console.log("account",req.body);
     const params = [
         req.body.name,
         req.body.email,
@@ -41,6 +42,13 @@ const user_delete = async (req, res) => {
     const cat = await userModel.deleteUser(params);
     await res.json(cat);
 };
+
+/*const user_checked = async (req, res) => {
+    const params = [
+        req.body.name,
+        req.body.passwd,
+    ];
+}*/
 
 module.exports = {
     user_list_get,
