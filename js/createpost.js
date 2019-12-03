@@ -7,7 +7,7 @@ const breedList = document.querySelectorAll('.breed-list');
 const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
 
-//create option for select element
+//create options to select the breed
 const createBreedOptions = (breeds) => {
     breedList.forEach((list) => {
         // clear list
@@ -36,7 +36,7 @@ const getBreeds = async () => {
 getBreeds();
 
 
-//create option for selecting user
+//create options to select the user
 const createUserOptions = (users) => {
     userList.forEach((list) => {
         // clear list

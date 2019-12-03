@@ -3,17 +3,14 @@
 const url = 'http://localhost:5500'; // change url when uploading to server
 
 const uluserinfo = document.getElementById('userinfolist');  //select ul element in index.html
-const username = document.getElementById('username');
-const useremail = document.getElementById('useremail');
-
+//const username = document.getElementById('username');
+//const useremail = document.getElementById('useremail');
 const ul = document.getElementById('mydogslist');  //select ul element in index.html
 const breed = document.getElementById('breed');
-const size = document.getElementById('size');
+//const size = document.getElementById('size');
 
-//const getBreed = ( () => {
 
-//});
-
+//fetch user info from the database
 const getUser = async (id) => {
     const response = await fetch(url + '/user/' + id);
     const user = await response.json();
@@ -25,11 +22,10 @@ const getUser = async (id) => {
       </li>
       `;
     };
-
 getUser();
 
 
-//build ul element with dog attribute
+//build ul list element with dogs, fetch info from database
 const getDog = async () => {
     const response = await fetch(url + '/dog');
     const dogs = await response.json();
@@ -60,9 +56,3 @@ const getBreed = async (id) => {
     return breed;
 };
 getDog();
-
-/*const getUser = async () => {
-  const response = await fetch(url + '/user/' + id);
-  const user = await response.json();
-  return user;
-};*/
