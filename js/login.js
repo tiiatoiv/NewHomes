@@ -1,26 +1,24 @@
 'use strict';
-
+const url = 'http://localhost:5500';
 const logUserForm = document.getElementById('logUserForm');
-
-logUserForm.addEventListener('login', async (e) => {
+console.log("log user form", logUserForm);
+logUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = serializeJson(loginForm);
+    const data = serializeJson(logUserForm);
     const fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
     };
   
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);
     if (!json.user) {
-      alert(json.message);
+        alert(json.message);
     } else {
       // save token
-      sessionStorage.setItem('token', json.token);
-      window.location.assign('userpageversio2.html');
+        sessionStorage.setItem('token', json.token);
+        window.location.replace('http://127.0.0.1:5500/html/userpage.html');
     }
   });
