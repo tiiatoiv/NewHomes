@@ -8,9 +8,40 @@ const uluserinfo = document.getElementById('userinfolist');  //select ul element
 const ul = document.getElementById('mydogslist');  //select ul element in index.html
 const breed = document.getElementById('breed');
 //const size = document.getElementById('size');
+const userpage = "OtherUser";
+
 
 
 //fetch user info from the database
+
+
+//NEW TEST
+
+//build profile ul element or users info
+const getUser = async () => {
+    const response = await fetch(url + '/user');
+    const users = await response.json();
+  //  const userpage = "OtherUser"; //currently variable is user -> select the user from db who's
+                            // username is admin. Once login is working, this should be changed to
+                            //const userid = loggedinsid -> if(user.id==userid) -> print the info
+    users.forEach( async (user) => {
+        if(user.username==userpage) {
+            //const user = await getUser(dog.owner);
+            //     const breed = await getBreed(dog.breed);
+            uluserinfo.innerHTML += `
+      <li>
+          <h2>${user.username}</h2>
+
+          <p>Email: ${user.email}</p>
+      </li>
+      `};
+    })
+};
+getUser();
+
+
+
+/**
 const getUser = async (id) => {
     const response = await fetch(url + '/user/' + id);
     const user = await response.json();
@@ -23,15 +54,18 @@ const getUser = async (id) => {
       `;
     };
 getUser();
+*/
+
+
 
 
 //build ul list element with dogs, fetch info from database
 const getDog = async () => {
     const response = await fetch(url + '/dog');
     const dogs = await response.json();
-    const ownerpage = "admin";
+  //  const ownerpage = "admin";
     dogs.forEach( async (dog) => {
-        if(dog.owner==ownerpage) {
+        if(dog.owner==userpage) {
         //const user = await getUser(dog.owner);
         const breed = await getBreed(dog.breed);
         ul.innerHTML += `
@@ -56,3 +90,4 @@ const getBreed = async (id) => {
     return breed;
 };
 getDog();
+
