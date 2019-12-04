@@ -34,7 +34,7 @@ addUserForm.addEventListener('submit', async (e) => {
     console.log('user add response', json);
     // save token
     sessionStorage.setItem('token', json.token); 
-    window.location.assign('userpageversio2.html');
+    window.location.assign('userpage.html');
   });
 
 

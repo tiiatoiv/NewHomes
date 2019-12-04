@@ -9,7 +9,7 @@ const ul = document.getElementById('mydogslist');  //select ul element in index.
 const breed = document.getElementById('breed');
 //const size = document.getElementById('size');
 
-const userpage = "OtherUser"; //CHANGE THIS TEXT TO MATCH THE USERNAME YOU WANT TO TEST NOW
+const userpage = "KoiranOmistaja"; //CHANGE THIS TEXT TO MATCH THE USERNAME YOU WANT TO TEST NOW
                                 //I.E. IF CHANGED TO "admin", WILL SHOW ADMINS INFO
 
 //fetch user info from the database build profile ul element or users info
@@ -41,22 +41,24 @@ const getDog = async () => {
   //  const ownerpage = "admin";
     dogs.forEach( async (dog) => {
         if(dog.owner==userpage) {
-        //const user = await getUser(dog.owner);
-        const breed = await getBreed(dog.breed);
+            //const user = await getUser(dog.owner);
+            const breed = await getBreed(dog.breed);
 
-        ul.innerHTML += `
+            ul.innerHTML += `
       <li>
           <h2>${dog.name}</h2>
           <figure>
-              <img src="${dog.filename}" class="resp">
+              <img src="${url}/${dog.filename}" class="resp">
           </figure>
           <p>Age: ${dog.age}</p>
           <p>Size: ${breed.size}</p>
           <p>Owner: ${dog.owner}</p>
           <p>Location: ${dog.location}</p>
+          <a href="../html/testdog.html"><h2>GO TO PAGE</h2></a>
       </li>
-      `};
-    })
+      `
+        };
+    });
 };
 
 //get related breed
@@ -66,4 +68,10 @@ const getBreed = async (id) => {
     return breed;
 };
 getDog();
+
+
+window.onload = function() {
+    var getId = prompt(dog);
+    localStorage.setItem("storageName",getInput);
+}
 

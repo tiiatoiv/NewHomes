@@ -21,6 +21,6 @@ logUserForm.addEventListener('login', async (e) => {
     } else {
       // save token
       sessionStorage.setItem('token', json.token);
-      window.location.assign('userpageversio2.html');
+      window.location.assign('userpage.html');
     }
   });

@@ -14,7 +14,7 @@ const authRoute = require('./routes/authRoute');
 app.use(cors());
 app.use(express.json());   //for parsing application/json
 app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-form-urlencoded
-//app.use(express.static('uploads'));
+app.use(express.static('uploads'));
 //app.use('/thumbnails', express.static('thumbnails'));
 
 /*if(process.env.SERVER === 'dev_localhost') {
@@ -25,8 +25,11 @@ app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-
         console.log('server app start?')
     });
 }*/
-app.use('/dog', passport.authenticate('jwt', {session: false}), dogRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
-app.use('/breed', passport.authenticate('jwt', {session: false}), breedRoute);
+//app.use('/dog', passport.authenticate('jwt', {session: false}), dogRoute);
+//app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app.use('/breed', passport.authenticate('jwt', {session: false}), breedRoute);
+app.use('/dog', dogRoute);
+app.use('/user', userRoute);
+app.use('/breed', breedRoute);
 app.use('/auth', authRoute);
 app.listen(port, () => console.log(`App listens on port ${port}!`));
