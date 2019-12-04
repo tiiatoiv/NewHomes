@@ -1,10 +1,13 @@
 'use strict';
 
-const getUsers = async () => {
-  //const response = await fetch('/user/');
-  //const users = await response.json();
+const url = 'http://localhost:5500';
 
-    //mock data until I integrate the API
+const getUsers = async () => {
+  const response = await fetch(url + '/user/');
+  const users = await response.json();
+  console.log(users);
+
+    /*mock data until I integrate the API
     const users = [
         {
             name: 'Boi',
@@ -24,7 +27,7 @@ const getUsers = async () => {
             email: 'lulu@metrpolia.fi',
             id: 2
         }
-    ]
+    ]*/
     console.log(users);
 
   for (const user of users) {
@@ -33,7 +36,7 @@ const getUsers = async () => {
     form.action = "/users/" + user.id;
     form.method = "DELETE"
     form.innerHTML = `
-        <div>Username: ${user.name}</div>
+        <div>Username: ${user.username}</div>
         <div>Phone: ${user.phone}</div>
         <div>Email: ${user.email}</div>
         <button type="submit-button" class="delete">Delete</button>
@@ -56,7 +59,7 @@ getUsers();
 function editUser(user) {
     console.log(user);
     document.querySelector("aside").style.display = "block";
-    document.querySelector("input[name=username]").value = user.name;
+    document.querySelector("input[name=username]").value = user.username;
     document.querySelector("input[name=phone]").value = user.phone;
     document.querySelector("input[name=email]").value = user.email;
 }

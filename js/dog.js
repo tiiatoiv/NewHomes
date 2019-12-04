@@ -1,9 +1,26 @@
 'use strict';
 
-const ul = document.querySelector('ul');
+const url = 'http://localhost:5500';
+//const ul = document.querySelector('ul');
 
 const getDog = async () => {
-  const dog = {
+    const idString = window.location.search
+    const id = idString.slice(4)
+
+    try{
+        const response = await fetch(url + '/dog/' + id);
+        const dog = await response.json();
+        console.log(dog);
+        document.getElementById('breed').innerHTML = dog.breed;
+        document.getElementById('dog-name').innerHTML = dog.name;
+        document.getElementById('dob').innerHTML = dog.dob;
+        document.getElementById('location').innerHTML = dog.location;
+        document.getElementById('img').src = "../images/" + dog.filename;
+    }catch (e) {
+        console.log(e.message);
+      }
+
+  /*const dog = {
     name: 'Mimi', 
     breed: 'poodle',
     dob: '12/12/2018',
@@ -11,15 +28,10 @@ const getDog = async () => {
     owner: 'Lily',
     location: 'Helsinki',
     filename: 'dog.jpg'
-  }
+  }*/
 
-  document.getElementById('breed').innerHTML = dog.breed;
-  document.getElementById('dog-name').innerHTML = dog.name;
-  document.getElementById('dob').innerHTML = dog.dob;
-  document.getElementById('location').innerHTML = dog.location;
-  document.getElementById('img').src = "../images/" + dog.filename;
-
-};
+    
+}
 
 const getOwner = async () => {
     const owner = {
