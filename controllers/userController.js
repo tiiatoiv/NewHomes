@@ -43,12 +43,6 @@ const user_delete = async (req, res) => {
     await res.json(cat);
 };
 
-/*const user_checked = async (req, res) => {
-    const params = [
-        req.body.name,
-        req.body.passwd,
-    ];
-}*/
 
 module.exports = {
     user_list_get,

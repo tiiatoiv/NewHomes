@@ -242,7 +242,7 @@ ul.doglist li{
 
 /*----------Footer-----------*/
 footer{
-    <!--position: fixed;-->
+    position: fixed;
     bottom: 0;
 }
 
