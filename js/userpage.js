@@ -8,16 +8,11 @@ const uluserinfo = document.getElementById('userinfolist');  //select ul element
 const ul = document.getElementById('mydogslist');  //select ul element in index.html
 const breed = document.getElementById('breed');
 //const size = document.getElementById('size');
-const userpage = "OtherUser";
 
+const userpage = "OtherUser"; //CHANGE THIS TEXT TO MATCH THE USERNAME YOU WANT TO TEST NOW
+                                //I.E. IF CHANGED TO "admin", WILL SHOW ADMINS INFO
 
-
-//fetch user info from the database
-
-
-//NEW TEST
-
-//build profile ul element or users info
+//fetch user info from the database build profile ul element or users info
 const getUser = async () => {
     const response = await fetch(url + '/user');
     const users = await response.json();
@@ -39,26 +34,6 @@ const getUser = async () => {
 };
 getUser();
 
-
-
-/**
-const getUser = async (id) => {
-    const response = await fetch(url + '/user/' + id);
-    const user = await response.json();
-      //  const user = await getUser(dog.owner);
-        uluserinfo.innerHTML += `
-      <li>
-          <h2>Username: ${user.username}</h2>
-          <p>Email: ${user.email}</p>
-      </li>
-      `;
-    };
-getUser();
-*/
-
-
-
-
 //build ul list element with dogs, fetch info from database
 const getDog = async () => {
     const response = await fetch(url + '/dog');
@@ -68,6 +43,7 @@ const getDog = async () => {
         if(dog.owner==userpage) {
         //const user = await getUser(dog.owner);
         const breed = await getBreed(dog.breed);
+
         ul.innerHTML += `
       <li>
           <h2>${dog.name}</h2>
