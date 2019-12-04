@@ -9,17 +9,17 @@ const dog_list_get = async (req, res) => {  //get all list to the main page
   await res.json(dogs);
 };
 
+const dog_mylist_get = async (req, res) => {  //get all list to the main page
+  const dogs = await dogModel.getMyDogs();
+  await res.json(dogs);
+};
+
 const dog_create_post = async (req, res) => {
   try{
-    //create thumbnail
-    //await resize.makeThumbnail(req.file.path,'thumbnails/' + req.file.filename, {width: 160, height: 160});
-    // get coordinates
-    //const coords = await imageMeta.getCoordinates(req.file.path);
-    //console.log('coords', coords);
-
     const params = [
       req.body.name,
-      req.body.age,
+      req.body.dob,
+      req.body.breed,
       req.body.owner,
       req.body.location,
       req.file.filename,
@@ -28,8 +28,8 @@ const dog_create_post = async (req, res) => {
     const response = await dogModel.addDog(params);
     await res.json(response);
 } catch (e){
-  console.log('exif error', e);
-  res.status(400).json({message: 'error'});
+  console.log('exif error controller issues wtf wtf', e);
+  res.status(400).json({message: 'error wtf controller issues'});
 }};
 
 const dog_get = async (req, res) => {  // get dog from user's input id
@@ -57,6 +57,7 @@ const dog_update_put = async(req,res) => {  //user or admin updates dog
 
 module.exports = {
     dog_list_get,
+    dog_mylist_get,
     dog_create_post,
     dog_get,
     dog_delete,
