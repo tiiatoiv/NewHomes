@@ -22,14 +22,26 @@ const createBreedOptions = (breeds) => {
     });
 };
 
+
+
 // get breeds to form options
 const getBreeds = async () => {
     try {
-        const response = await fetch(url + '/breed');
-        const breeds = await response.json();
-        createBreedOptions(breeds);
-    }
-    catch (e) {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        try {
+            const response = await fetch(url + '/breed', options);
+            const breeds = await response.json();
+            createBreedOptions(breeds);
+        } catch (e) {
+            console.log(e.message);
+        }
+        ;
+
+    } catch (e) {
         console.log(e.message);
     }
 };
@@ -37,30 +49,40 @@ getBreeds();
 
 
 //create options to select the user
-const createUserOptions = (users) => {
-    userList.forEach((list) => {
-        // clear list
-        list.innerHTML = '';
-        users.forEach((user) => {
-            // create options with DOM methods
-            const option = document.createElement('option');
-            option.innerHTML = user.username;
-            option.classList.add('light-border');
-            list.appendChild(option);
-        });
-    });
-};
+    const createUserOptions = (user) => {
+        userList.forEach((list) => {
+            // clear list
+            list.innerHTML = '';
+           // users.forEach((user) => {
+                // create options with DOM methods
+                const option = document.createElement('option');
+                option.innerHTML = user.username;
+                option.classList.add('light-border');
+                list.appendChild(option);
+            });
+    };
 
 // get users to form options
-const getUsers = async () => {
-    try {
-        const response = await fetch(url + '/user');
-        const users = await response.json();
-        createUserOptions(users);
-    }
-    catch (e) {
-        console.log(e.message);
-    }
-};
-getUsers();
+    const getUsers = async () => {
+        try {
+            const options = {
+                headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+                },
+            };
+            try {
+                const response = await fetch(url + '/user', options);
+                const user = await response.json();
+                createUserOptions(user);
+            } catch (e) {
+                console.log(e.message);
+            }
+            ;
+        } catch (e) {
+            console.log(e.message);
+        }
+        ;
+    };
+    getUsers();
+
 

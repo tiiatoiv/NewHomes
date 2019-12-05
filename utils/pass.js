@@ -4,20 +4,27 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const passportJWT = require('passport-jwt');
 const JWTStrategy = passportJWT.Strategy;
+const toUnnamed = require('named-placeholders');
 const ExtractJWT = passportJWT.ExtractJwt; //allows only requests with valid tokens to access some special routes needing authentication
 const userModel = require('../models/userModel');
+console.log('Hello');
 
 //strategy for username password login
 passport.use(new Strategy(
     async (username, password, done) => {
+      console.log(password);
       const params = [username];
       try {
         const [user] = await userModel.getUserLogin(params);
         console.log('Local strategy', user); // result is binary row
+    
         if (user === undefined) {
+          console.log(username);
           return done(null, false, {message: 'Incorrect username'});
         }
+        console.log("password", user.password);
         if (!bcrypt.compareSync(password, user.password)) {
+          console.log(username);
           return done(null, false, {message: 'Incorrect password.'});
         }
         delete user.password; // delete password from user object
@@ -36,7 +43,7 @@ passport.use(new JWTStrategy({
       console.log('payload', jwtPayload);
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
       try {
-        const [user] = await userModel.getUser(jwtPayload.user_id);
+        const [user] = await userModel.getUser(jwtPayload.id);
         if (user === undefined)
           return done(null, false);
 

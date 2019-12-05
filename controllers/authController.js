@@ -3,10 +3,12 @@
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const userModel = require('../models/userModel');
-const passport = require('passport'); //do the login
+const passport = require('../utils/pass'); //do the login
+const jwt = require('jsonwebtoken');
 
 const login = (req,res) => {
     passport.authenticate('local', {session: false}, (err, user, info) => {
+        console.log(info);
         if (err || !user) {
             console.log('login error', err, user);
             return res.status(400).json({
@@ -19,8 +21,8 @@ const login = (req,res) => {
             res.send(err);
         }
           // generate a signed son web token with the contents of user object and return it in the response
-          const token = jwt.sign(user, 'project2019');
-          return res.json({user, token});
+        const token = jwt.sign(user, 'project2019');
+        return res.json({user, token});
           
         });
       })
@@ -35,10 +37,10 @@ const register = async (req,res,next) => {
         res.send(errors.array());
     } else {
         console.log('req?', req.body)
-        const salt = bcrypt.genSaltSync(12);
-        const hash = bcrypt.hashSync(req.body.passwd,salt);
+        const salt = bcrypt.genSaltSync(10);   //2same passwds have different hash
+        const hash = bcrypt.hashSync(req.body.password,salt);
         const params = [
-            req.body.name,
+            req.body.username,
             req.body.email,
             hash  //save hash instead of the actual password
         ]
