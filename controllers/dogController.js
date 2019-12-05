@@ -15,21 +15,27 @@ const dog_mylist_get = async (req, res) => {  //get all list to the main page
 };
 
 const dog_create_post = async (req, res) => {
-  try{
-    const params = [
-      req.body.name,
-      req.body.dob,
-      req.body.breed,
-      req.body.owner,
-      req.body.location,
-      req.file.filename,
-      //coords
-    ];
-    const response = await dogModel.addDog(params);
-    await res.json(response);
-} catch (e){
-  console.log('exif error controller issues wtf wtf', e);
-  res.status(400).json({message: 'error wtf controller issues'});
+  if(req.user === undefined) {
+    // redirect to login...
+    window.location.replace('login.html');
+    console.log('not authenticated?', req.user);
+  } else {
+    try{
+      const params = [
+        req.body.name,
+        req.body.dob,
+        req.body.breed,
+        req.body.owner,
+        req.body.location,
+        req.file.filename,
+        //coords
+      ];
+      const response = await dogModel.addDog(params);
+      await res.json(response);
+  } catch (e){
+    console.log('exif error controller issues wtf wtf', e);
+    res.status(400).json({message: 'error wtf controller issues'});
+  }
 }};
 
 const dog_get = async (req, res) => {  // get dog from user's input id
@@ -39,20 +45,28 @@ const dog_get = async (req, res) => {  // get dog from user's input id
 };
 
 const dog_delete = async (req, res) => {   //user or admin deletes dog
-  const params = [req.params.id];
-  const dog = await dogModel.deleteDog(params);
-  await res.json(dog);
+  if(req.user === undefined){
+    window.location.replace('login.html');
+  } else {
+    const params = [req.params.id];
+    const dog = await dogModel.deleteDog(params);
+    await res.json(dog);
+  }
 };
 
 const dog_update_put = async(req,res) => {  //user or admin updates dog
-  const params = [
-    req.body.name,
-    req.body.age,
-    req.body.location, 
-    req.body.owner,
-  ]
-  const response = await dogModel.updateDog(params);
-  await res.json(response);
+  if(req.user === undefined){
+    window.location.replace('login.html');
+  } else {
+    const params = [
+      req.body.name,
+      req.body.age,
+      req.body.location, 
+      req.body.owner,
+    ]
+    const response = await dogModel.updateDog(params);
+    await res.json(response);
+  }
 }
 
 module.exports = {

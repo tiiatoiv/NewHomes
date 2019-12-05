@@ -26,9 +26,9 @@ app.use('/html', express.static('html'));
         console.log('server app start?')
     });
 }*/
-app.use('/dog', passport.authenticate('jwt', {session: false}), dogRoute);
+app.use('/dog', passport.authenticate(['jwt', 'anonymous'], {session: false}), dogRoute);
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
-app.use('/breed', passport.authenticate('jwt', {session: false}), breedRoute);
+app.use('/breed', passport.authenticate(['jwt', 'anonymous'], {session: false}), breedRoute);
 app.use('/auth', authRoute);
 //app.use('/dog', dogRoute);
 //app.use('/user', userRoute);

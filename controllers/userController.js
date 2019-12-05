@@ -42,12 +42,12 @@ const user_update_put = async (req, res) => {
     await res.json(user);
 };
 */
-
+//check if username exits or not
 const user_delete = async (req, res) => {
     const params = [req.params.id];
     console.log('delete', params);
-    const cat = await userModel.deleteUser(params);
-    await res.json(cat);
+    const user = await userModel.deleteUser(params);
+    await res.json(user);
 };
 
 

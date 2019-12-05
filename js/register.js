@@ -19,6 +19,10 @@ const validatePassword = () => {
 password.onchange = validatePassword;
 retypePassword.onkeyup = validatePassword;
 
+const checkExistName = () => {
+
+}
+
 //asign event to submit button 
 addUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
