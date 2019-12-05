@@ -19,6 +19,6 @@ logUserForm.addEventListener('submit', async (e) => {
     } else {
       // save token
         sessionStorage.setItem('token', json.token);
-        window.location.replace('http://127.0.0.1:5500/html/userpage.html');
+        window.location.replace('userpage.html');
     }
   });

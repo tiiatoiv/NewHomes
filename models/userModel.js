@@ -83,10 +83,22 @@ const getUserLogin = async (params) => {
     }
   };
 
+const checkUser = async (params) => {
+    try{
+        const [rows] = await promisePool.execute(
+            'SELECT username FROM users WHERE username = ?',
+            params);
+            return rows;
+    } catch (e) {
+        console.log('error', e.message);
+    }
+};
+
 module.exports = {
     getAllUsers,
     getUser,
     addUser,
     deleteUser,
-    getUserLogin
+    getUserLogin,
+    checkUser
 };
