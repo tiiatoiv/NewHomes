@@ -15,27 +15,17 @@ const user_get = async (req, res) => {
 const user_create_account = async (req, res) => {
     console.log("account",req.body);
     const params = [
-        req.body.name,
+        req.body.username,
         req.body.email,
-        req.body.passwd,
+        req.body.password,
     ];
     const response = await userModel.addUser(params);
     const user = await userModel.getUser([response.insertId]);
     await res.json(user);
 };
 
-/**
-const user_update_put = async (req, res) => {
-    const params = [
-        req.body.name,
-        req.body.password,
-        req.body.id];
-    console.log('update', params);
-    const user = await userModel.updateUser(params);
-    await res.json(user);
-};
-*/
-//check if username exits or not
+
+
 const user_delete = async (req, res) => {
     const params = [req.params.id];
     console.log('delete', params);

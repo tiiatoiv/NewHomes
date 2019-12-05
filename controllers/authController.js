@@ -57,8 +57,22 @@ const logout = (req, res) => {
     res.json({message: 'logout'});
 };
 
+const user_check = async (req, res) => {
+    const params = [req.body.username];
+    console.log('check', params);
+    const user = await userModel.checkUser(params);
+    if(user != null){
+        await res.json(user);
+        return true;
+    } else {
+        return false;
+    }
+};
+
+
 module.exports = {
     login,
     logout,
-    register
+    register,
+    user_check
   };

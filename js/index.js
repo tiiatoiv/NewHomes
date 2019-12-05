@@ -49,6 +49,7 @@ const getDogs = async () => {
           <p>Size: ${breed.size}</p>
           <p>Owner: ${dog.owner}</p>
           <p>Location: ${dog.location}</p>
+          <button class="view-button">View</button>
       </li>
       `;
     })

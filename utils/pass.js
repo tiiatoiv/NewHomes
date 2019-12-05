@@ -20,7 +20,7 @@ passport.use(new Strategy(
       try {
         const [user] = await userModel.getUserLogin(params);
         console.log('Local strategy', user); // result is binary row
-    
+
         if (user === undefined) {
           console.log(username);
           return done(null, false, {message: 'Incorrect credential'});
@@ -46,7 +46,7 @@ passport.use(new JWTStrategy({
       console.log('payload', jwtPayload);
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
       try {
-        const [user] = await userModel.getUser(jwtPayload.user_id);
+        const [user] = await userModel.getUser(jwtPayload.id);
         if (user === undefined)
           return done(null, false);
 

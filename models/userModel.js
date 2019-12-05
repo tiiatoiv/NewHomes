@@ -85,10 +85,11 @@ const getUserLogin = async (params) => {
 
 const checkUser = async (params) => {
     try{
+        console.log(params);
         const [rows] = await promisePool.execute(
             'SELECT username FROM users WHERE username = ?',
-            params);
-            return rows;
+            params);            
+        return rows;
     } catch (e) {
         console.log('error', e.message);
     }
