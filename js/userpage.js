@@ -12,38 +12,6 @@ let userinfo = sessionStorage.getItem("token");
 console.log('user token?', userinfo);
 //fetch user info from server
 
-/**
-const getUser = async () => {
-    try {
-        const options = {
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-        };
-        const response = await fetch(url + '/user', options);
-        const users = await response.json();
-        users.forEach(async (user) => {
-            if (user.username == userinfo.id) {
-                //const user = await getUser(dog.owner);
-                //     const breed = await getBreed(dog.breed);
-                uluserinfo.innerHTML += `
-      <li>
-          <h2>${user.username}</h2>
-
-          <p>Email: ${user.email}</p>
-      </li>
-      `
-            }
-            ;
-        });
-    } catch (e) {
-        console.log(e.message);
-    }
-    ;
-};
-getUser();
-*/
-
 const getUser = async () => {
     try {
         const options = {
@@ -122,7 +90,7 @@ const getDog = async () => {
           <p>Size: ${dog.breed}</p>
           <p>Owner: ${dog.owner}</p>
           <p>Location: ${dog.location}</p>
-          <a href="../html/testdog.html"><h2>GO TO PAGE</h2></a>
+          <a href="../html/dog.html"><h2>GO TO PAGE</h2></a>
       </li>
       `
                };
