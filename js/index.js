@@ -44,7 +44,7 @@ const getDogs = async () => {
       <li>
           <h2>${dog.name}</h2>
           <figure>
-              <img src="url + '/uploads/ + ${dog.filename}" class="resp" alt="${dog.name}">
+              <img src="${url}/${dog.filename}" class="resp" alt="${dog.name}">
           </figure>
           <p>Age: ${dog.age}</p>
           <p>Size: ${breed.size}</p>

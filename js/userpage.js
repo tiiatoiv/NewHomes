@@ -5,6 +5,7 @@ const url = 'http://localhost:5500'; // change url when uploading to server
 const uluserinfo = document.getElementById('userinfolist');  //select ul element in index.html
 const ul = document.getElementById('mydogslist');  //select ul element in index.html
 const breed = document.getElementById('breed');
+let giveusername;
 
 
 let userinfo = sessionStorage.getItem("token");
@@ -61,10 +62,12 @@ const getUser = async () => {
       <p>${user.email}</p>
       </li>
       `
+        giveusername = user.username;
     }
     catch (e) {
         console.log(e.message);
     };
+    return user.username;
 };
 getUser();
 
@@ -103,11 +106,10 @@ const getDog = async () => {
         };
         const response = await fetch(url + '/dog', options);
         const dogs = await response.json();
+
         //  const ownerpage = "admin";
         dogs.forEach(async (dog) => {
-
-               if (dog.owner === user.username) {
-                   //const user = await getUser(dog.owner);
+               if (dog.owner === giveusername) {
                    //    const breed = await getBreed(dog.breed);
 
                    ul.innerHTML += `
@@ -123,8 +125,7 @@ const getDog = async () => {
           <a href="../html/testdog.html"><h2>GO TO PAGE</h2></a>
       </li>
       `
-                   //}
-               } ;
+               };
         });
     } catch (e) {
         console.log(e.message);

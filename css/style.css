@@ -110,6 +110,9 @@ main li {
     border-radius: 5px;
 }
 
+.resp {
+    width: 100%;
+}
 
 /*----------Footer-----------*/
 footer{
