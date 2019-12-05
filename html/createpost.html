@@ -36,19 +36,19 @@
 
     <!------------Create a New Post Form--------------->
 <div class="col-6">
-    <form action="http://localhost:5500/dog" method="post" enctype="multipart/form-data" class="light-border">
+    <form method="post" class="light-border" id="addPostForm">
         <h4>Dog's name</h4>
-        <input class="light-border center" type="text" name="name" placeholder="Name" required>
+        <input id="name" class="light-border center" type="text" name="name" placeholder="Name" required>
         <h4>Age</h4>
-        <input class="light-border center" type="date" name="dob" placeholder="Age" required>
+        <input id="dob" class="light-border center" type="date" name="dob" placeholder="Age" required>
         <h4>Breed</h4>
-        <select class="light-border breed-list center" name="breed"></select>
+        <select id="breed" class="light-border breed-list center" name="breed"></select>
         <h4>Owner (your username)</h4>
-        <select class="light-border users-list center" name="owner"></select>
+        <select id="owner" class="light-border users-list center" name="owner"></select>
         <h4>Location</h4>
-        <input class="light-border center" type="text" name="location" placeholder="location" required>
+        <input id="location" class="light-border center" type="text" name="location" placeholder="location" required>
         <h4>Add picture</h4>
-        <input class="light-border center" type="file" name="dog"><br>
+        <input id="filename" class="light-border center" type="file" name="dog"><br>
         <button class="light-border center" type="submit">Save</button>
     </form></div></div></div>
 

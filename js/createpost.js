@@ -6,6 +6,7 @@ const ul = document.getElementById('doglist');  //select ul element in index.htm
 const breedList = document.querySelectorAll('.breed-list');
 const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
+const addPostForm = document.getElementById('addPostForm');
 
 //create options to select the breed
 const createBreedOptions = (breeds) => {
@@ -82,5 +83,39 @@ getBreeds();
         ;
     };
     getUsers();
+/**
+//asign event to submit button
+addPostForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = serializeJson(addPostForm);
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+            body: JSON.stringify(data), //body data type must match "Content-Type" header
+        };
+        console.log(fetchOptions);
+        const response = await fetch(url + '/dog', fetchOptions);
+        const json = await response.json();
+        console.log('added post', json);
+        getDog();
+        // save token
+});*/
 
-
+addPostForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const fd = new FormData(addPostForm);
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: fd,
+    };
+    const response = await fetch(url + '/dog', fetchOptions);
+    const json = await response.json();
+    console.log('add response', json);
+   // getDog();
+});
