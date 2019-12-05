@@ -33,6 +33,7 @@ const getBreeds = async () => {
 };
 getBreeds();
 
+
 //build ul element with dog attribute
 const getDogs = async () => {
     const response = await fetch(url + '/dog');
@@ -51,9 +52,8 @@ const getDogs = async () => {
           <p>Location: ${dog.location}</p>
       </li>
       `;
-    })
+    });
 };
-getDogs();
 
 const getBreed = async (id) => {
   try {
@@ -64,3 +64,4 @@ const getBreed = async (id) => {
     console.log(e.message);
   }
 };
+getDogs();

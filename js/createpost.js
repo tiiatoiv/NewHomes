@@ -22,8 +22,6 @@ const createBreedOptions = (breeds) => {
     });
 };
 
-
-
 // get breeds to form options
 const getBreeds = async () => {
     try {
