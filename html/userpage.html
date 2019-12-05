@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>NewHomes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../css/css-userpage.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
 </head>
@@ -14,12 +13,12 @@
 <body>
 <!--------------------Navigation bar----------->
 <header>
-    <a class="nav-brand" href="index.html"><b>NewHomes</b></a>
+    <a class="nav-brand" href="#top"><b>NewHomes</b></a>
     <nav>
         <ul class='nav-links'>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#top">Profile</a></li>
-            <li><a href="#">FAQ (info)</a></li>
+            <li><a href="userpage.html">Profile</a></li>
+            <li><a href="info.html">FAQ (info)</a></li>
         </ul>
     </nav>
     <a href="#"><button>Sign Out</button> </a>
@@ -37,11 +36,10 @@
             <li class="ulhorizontal"><a class="profilebutton" href="#">Delete profile</a></li>
             </ul><br>
             <p>Logged in:</p>
+
             <ul id="userinfolist">
 
             </ul>
-            <p>Right now this is hardcoded to show admin, this needs to be changed to show the current logged in user.
-            <br><br>My posts list on the left shows currenty dogs, who's owner is admin. This needs to be changen aswell.</p>
 
         </div>
         </div>
@@ -49,7 +47,7 @@
         <div class="col-8">
             <ul class="center">
                 <li class="ulhorizontal"><h4>My posts</h4></li>
-                <li class="ulhorizontal center"><a class="infoch" href="/NewHomes/html/createpost.html">Create a post</a></li>
+                <li class="ulhorizontal center"><a class="profilebutton" href="/NewHomes/html/createpost.html">Create a post</a></li>
             </ul>
 
             <ul id="mydogslist" class="doglist"></ul>
@@ -72,8 +70,8 @@
     <div class="footer-left">
         <h2 style="font-family: 'Permanent Marker', cursive">NewHomes</h2>
         <p class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="#">FAQs</a>
+            <a href="#">Home</a>
+            <a href="#">Terms and Conditions</a>
         </p>
         <p class="footer-company-name">© 2019 NewHomes.Co</p>
     </div>

@@ -210,6 +210,10 @@ ul.doglist li{
         box-sizing: border-box;
 }
 
+.resp {
+    width: 100%;
+}
+
 .infoch {
     padding: 9px 25px;
     background-color: rgba(255, 182, 193, 0.59);
@@ -236,3 +240,105 @@ ul.doglist li{
     background-color: rgba(255, 255, 255, .4);
 }
 
+/*----------Footer-----------*/
+footer{
+ /**   position: fixed;*/ /** Fixed position is not going to work when doing a site for mobile, it will fill up the whole screen */
+    bottom: 0;
+}
+
+@media (max-height:800px){
+    footer {  }
+    header { padding-top:20px; }
+}
+
+.footer-distributed{
+    box-sizing: border-box;
+    text-align: left;
+    width: 100%;
+  /*  font: 16px; */
+    background-color: #FFB6C1;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.footer-distributed .footer-left {
+    width: 20%;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    text-decoration: none;
+    color:  inherit;
+}
+
+.footer-distributed .footer-center {
+    width: 20%;
+}
+
+
+.footer-distributed .footer-center i {
+    background-color:  #50575c;
+    font-size:30px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    margin: 10px 10px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    vertical-align: middle;
+    margin:0;
+}
+.footer-distributed .footer-center div {
+    margin: 0;
+}
+
+.footer-distributed .footer-right {
+    width: 20%;
+}
+
+@media (max-width: 880px) {
+
+        .column, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+        .col-4, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .col-8, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .footer-distributed .footer-center i    {
+        margin-left: 0;
+    }
+
+}

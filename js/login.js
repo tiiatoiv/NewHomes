@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:5500';
 const logUserForm = document.getElementById('logUserForm');
+
 console.log("log user form", logUserForm);
 logUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
