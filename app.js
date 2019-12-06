@@ -17,6 +17,9 @@ app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-
 app.use(express.static('uploads'));
 //app.use('/thumbnails', express.static('thumbnails'));
 app.use('/html', express.static('html'));
+app.use('/js', express.static('js'));
+app.use('/css', express.static('css'));
+app.use('/images', express.static('images'));
 
 /*if(process.env.SERVER === 'dev_localhost') {
     require('./secure/localhost')(app);
