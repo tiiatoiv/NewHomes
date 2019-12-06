@@ -13,11 +13,23 @@ const user_list_get = async (req, res) => {
     }
 };
 
+const user_list_get_all = async (req, res) => {
+    const users = await userModel.getAllUsers();
+    await res.json(users);
+};
+
 const user_get = async (req, res) => {
     const params = [req.params.id];
     const user = await userModel.getUserAnyone(params);
     await res.json(user[0]);
 };
+
+
+const user_get_by_name = async (req, res) => {
+    const params = [req.params.username];
+    const user = await userModel.getUserByName(params);
+    await res.json(user[0]);
+}
 
 const user_create_account = async (req, res) => {
     console.log("account",req.body);
@@ -57,4 +69,6 @@ module.exports = {
     user_create_account,
     //user_update_put,
     user_delete,
+    user_get_by_name,
+    user_list_get_all
 };
