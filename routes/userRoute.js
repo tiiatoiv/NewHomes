@@ -11,6 +11,7 @@ router.get('/:id', userController.user_get); //get certain user
 
 router.post('/', userController.user_create_account); //put a new user into database
 
+router.put('/', userController.user_update_put);
 
 router.delete('/:id', userController.user_delete);
 

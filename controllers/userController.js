@@ -31,17 +31,17 @@ const user_create_account = async (req, res) => {
     await res.json(user);
 };
 
-/**
+
 const user_update_put = async (req, res) => {
     const params = [
         req.body.name,
-        req.body.password,
-        req.body.id];
+        req.body.email,
+        req.body.password];
     console.log('update', params);
     const user = await userModel.updateUser(params);
     await res.json(user);
 };
-*/
+
 //check if username exits or not
 const user_delete = async (req, res) => {
     const params = [req.params.id];
@@ -55,6 +55,6 @@ module.exports = {
     user_list_get,
     user_get,
     user_create_account,
-    //user_update_put,
+    user_update_put,
     user_delete,
 };

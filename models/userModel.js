@@ -63,7 +63,7 @@ const addUser = async (params) => {
 };
 
 //update users info
-/**const updateUser = async (params) => {
+const updateUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
             'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?;',
@@ -73,7 +73,7 @@ const addUser = async (params) => {
     catch (e) {
         console.log('error', e.message);
     }
-}; */
+};
 
 //delete user from database
 const deleteUser = async (params) => {
@@ -116,6 +116,7 @@ module.exports = {
     getUser,
     getUserAnyone,
     addUser,
+    updateUser,
     deleteUser,
     getUserLogin,
     checkUser
