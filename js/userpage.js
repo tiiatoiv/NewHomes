@@ -2,16 +2,20 @@
 
 const url = 'http://localhost:5500'; // change url when uploading to server
 
+const loginbutton = document.getElementById('loginbutton');
+const logoutbutton = document.getElementById('logoutbutton');
 const uluserinfo = document.getElementById('userinfolist');  //select ul element in index.html
 const ul = document.getElementById('mydogslist');  //select ul element in index.html
 const breed = document.getElementById('breed');
+const deleteButton = document.getElementById('deleteButton');
+const modifyButton = document.getElementById('deleteButton');
 let giveusername;
 
-
+//Get's the user token from the login or register page
 let userinfo = sessionStorage.getItem("token");
 console.log('user token?', userinfo);
-//fetch user info from server
 
+//fetch the logged in user's info from database
 const getUser = async () => {
     try {
         const options = {
@@ -19,18 +23,20 @@ const getUser = async () => {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/user/', options); //
+        const response = await fetch(url + '/user/', options);
         console.log('before', response.body);
         const user = await response.json();
                          //  const userString = await JSON.stringify(response);
         console.log('after', user);
+        //Show's the logged in user's info in the profile panel
         uluserinfo.innerHTML += `
       <li>
       <h3>${user.username}</h3>
       <p>${user.email}</p>
       </li>
       `
-        giveusername = user.username;
+        giveusername = user.username; //logged in user's username is passed outside the getUser() function,
+                                        //so that it's able to be used on the getDog() fuction below
     }
     catch (e) {
         console.log(e.message);
@@ -39,32 +45,7 @@ const getUser = async () => {
 };
 getUser();
 
-/**
-//fetch user info from the database build profile ul element or users info
-const getUser = async () => {
-    const response = await fetch(url + '/user');
-    const users = await response.json();
-  //  const userpage = "OtherUser"; //currently variable is user -> select the user from db who's
-                            // username is admin. Once login is working, this should be changed to
-                            //const userid = loggedinsid -> if(user.id==userid) -> print the info
-    users.forEach( async (user) => {
-        if(user.username==userpage) {
-            //const user = await getUser(dog.owner);
-            //     const breed = await getBreed(dog.breed);
-            uluserinfo.innerHTML += `
-      <li>
-          <h2>${user.username}</h2>
-
-          <p>Email: ${user.email}</p>
-      </li>
-      `};
-    })
-};
-getUser();
-
-*/
-
-//build ul list element with dogs, fetch info from database
+//build ul list elements of the logged in users posts
 const getDog = async () => {
     try {
         const options = {
@@ -72,12 +53,10 @@ const getDog = async () => {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/dog', options);
+        const response = await fetch(url + '/dog', options);    //fetch all the dogs from the database
         const dogs = await response.json();
-
-        //  const ownerpage = "admin";
         dogs.forEach(async (dog) => {
-               if (dog.owner === giveusername) {
+               if (dog.owner === giveusername) {         //if the dog's owner matches to the logged in user > show it on the userpage
                    //    const breed = await getBreed(dog.breed);
 
                    ul.innerHTML += `
@@ -101,3 +80,9 @@ const getDog = async () => {
 };
 getDog();
 
+
+logoutbutton.style.display = 'none';
+if (sessionStorage.getItem('token')) {
+    loginbutton.style.display = 'none';
+    logoutbutton.style.display = 'block';
+}
