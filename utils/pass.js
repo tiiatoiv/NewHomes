@@ -4,9 +4,14 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const passportJWT = require('passport-jwt');
 const JWTStrategy = passportJWT.Strategy;
+const toUnnamed = require('named-placeholders');
 const ExtractJWT = passportJWT.ExtractJwt; //allows only requests with valid tokens to access some special routes needing authentication
 const userModel = require('../models/userModel');
-console.log('Hello');
+const AnonymousStrategy = require('passport-anonymous').Strategy;
+
+
+//anonymous for get
+passport.use(new AnonymousStrategy());
 
 //strategy for username password login
 passport.use(new Strategy(
@@ -19,12 +24,12 @@ passport.use(new Strategy(
     
         if (user === undefined) {
           console.log(username);
-          return done(null, false, {message: 'Incorrect username'});
+          return done(null, false, {message: 'Incorrect credential'});
         }
         console.log("password", user.password);
         if (!bcrypt.compareSync(password, user.password)) {
           console.log(username);
-          return done(null, false, {message: 'Incorrect password.'});
+          return done(null, false, {message: 'Incorrect credential'});
         }
         delete user.password; // delete password from user object
         return done(null, {...user}, {message: 'Logged In Successfully'}); // a={this.props.a} b={this.props.b}
@@ -42,7 +47,7 @@ passport.use(new JWTStrategy({
       console.log('payload', jwtPayload);
       //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
       try {
-        const [user] = await userModel.getUser(jwtPayload.user_id);
+        const [user] = await userModel.getUser(jwtPayload.id);
         if (user === undefined)
           return done(null, false);
 

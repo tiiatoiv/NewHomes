@@ -1,6 +1,7 @@
 'use strict';
 const url = 'http://localhost:5500';
 const logUserForm = document.getElementById('logUserForm');
+
 console.log("log user form", logUserForm);
 logUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -19,6 +20,6 @@ logUserForm.addEventListener('submit', async (e) => {
     } else {
       // save token
         sessionStorage.setItem('token', json.token);
-        window.location.replace('http://127.0.0.1:5500/html/userpage.html');
+        window.location.replace('userpage.html');
     }
   });

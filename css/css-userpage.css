@@ -210,6 +210,10 @@ ul.doglist li{
         box-sizing: border-box;
 }
 
+.resp {
+    width: 100%;
+}
+
 .infoch {
     padding: 9px 25px;
     background-color: rgba(255, 182, 193, 0.59);
@@ -238,18 +242,19 @@ ul.doglist li{
 
 /*----------Footer-----------*/
 footer{
-    position: fixed;
+ /**   position: fixed;*/ /** Fixed position is not going to work when doing a site for mobile, it will fill up the whole screen */
     bottom: 0;
 }
 
 @media (max-height:800px){
-    footer { position: static; }
+    footer {  }
     header { padding-top:20px; }
 }
 
 .footer-distributed{
     box-sizing: border-box;
     text-align: left;
+    width: 100%;
   /*  font: 16px; */
     background-color: #FFB6C1;
 }
@@ -263,7 +268,7 @@ footer{
 
 
 .footer-distributed .footer-left {
-    width: 25%;
+    width: 20%;
 }
 
 .footer-distributed .footer-links a {
@@ -273,7 +278,7 @@ footer{
 }
 
 .footer-distributed .footer-center {
-    width: 25%;
+    width: 20%;
 }
 
 
@@ -304,7 +309,7 @@ footer{
 }
 
 .footer-distributed .footer-right {
-    width: 25%;
+    width: 20%;
 }
 
 @media (max-width: 880px) {
@@ -314,6 +319,11 @@ footer{
             margin-top: 0;
         }
         .col-4, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .col-8, input[type=submit] {
             width: 100%;
             margin-top: 0;
         }

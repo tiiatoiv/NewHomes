@@ -2,22 +2,29 @@
 const userModel = require('../models/userModel');
 
 const user_list_get = async (req, res) => {
-    const users = await userModel.getAllUsers();
-    await res.json(users);
+    console.log('get user or users', req.user);
+    if(req.user){
+        const user = await userModel.getUser(req.user.id);
+        console.log('got user', user);
+        await res.json(user[0]);
+    } else {
+        const users = await userModel.getAllUsers();
+        await res.json(users);
+    }
 };
 
 const user_get = async (req, res) => {
     const params = [req.params.id];
-    const user = await userModel.getUser(params);
+    const user = await userModel.getUserAnyone(params);
     await res.json(user[0]);
 };
 
 const user_create_account = async (req, res) => {
     console.log("account",req.body);
     const params = [
-        req.body.name,
+        req.body.username,
         req.body.email,
-        req.body.passwd,
+        req.body.password,
     ];
     const response = await userModel.addUser(params);
     const user = await userModel.getUser([response.insertId]);
@@ -35,12 +42,12 @@ const user_update_put = async (req, res) => {
     await res.json(user);
 };
 */
-
+//check if username exits or not
 const user_delete = async (req, res) => {
     const params = [req.params.id];
     console.log('delete', params);
-    const cat = await userModel.deleteUser(params);
-    await res.json(cat);
+    const user = await userModel.deleteUser(params);
+    await res.json(user);
 };
 
 
