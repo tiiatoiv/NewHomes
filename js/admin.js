@@ -3,7 +3,15 @@
 const url = 'http://localhost:5500';
 
 const getUsers = async () => {
-  const response = await fetch(url + '/user/');
+  
+    const fetchOptions = {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+      };
+
+  const response = await fetch(url + '/user/', fetchOptions);
   const users = await response.json();
   console.log(users);
 
@@ -28,7 +36,7 @@ const getUsers = async () => {
             id: 2
         }
     ]*/
-    console.log(users);
+    
 
   for (const user of users) {
     console.log(user);

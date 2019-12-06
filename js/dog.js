@@ -8,6 +8,7 @@ const getDog = async () => {
     const id = idString.slice(4)
 
     try{
+        
         const response = await fetch(url + '/dog/' + id);
         const dog = await response.json();
         console.log(dog);
@@ -19,6 +20,7 @@ const getDog = async () => {
     }catch (e) {
         console.log(e.message);
       }
+
 
   /*const dog = {
     name: 'Mimi', 
@@ -33,7 +35,24 @@ const getDog = async () => {
     
 }
 
-const getOwner = async () => {
+const getOwner = async (name) => {
+    /*let owner;
+    try{
+    
+        const response = await fetch(url + '/user/');
+        const users = await response.json();
+        owner = users.find((u) => u.name == name);
+        if (!owner){
+            throw new Error("Owner not found.");
+        }
+        console.log(users);
+        
+    }catch (e) {
+        console.log(e.message);
+        document.getElementById("main").innerHTML = e.message;
+      }*/
+
+    
     const owner = {
         name: 'Lily',
         phone: '+358 40 5582316',
