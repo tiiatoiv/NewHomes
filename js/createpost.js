@@ -98,5 +98,6 @@ addPostForm.addEventListener('submit', async (evt) => {
     const response = await fetch(url + '/dog', fetchOptions);
     const json = await response.json();
     console.log('add response', json);
+    window.location.replace('userpage.html');
    // getDog();
 });

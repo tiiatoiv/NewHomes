@@ -43,7 +43,7 @@ const getUser = async () => {
     catch (e) {
         console.log(e.message);
     };
-    return user.username;
+   // return user.username;
 };
 getUser();
 
@@ -62,7 +62,8 @@ const getDog = async () => {
                    //    const breed = await getBreed(dog.breed);
 
                    ul.innerHTML += `
-      <li><button id="deletepost${dog.id}">Delete post</button>
+      <li>
+      <a href="deletepost.html?id=${dog.id}"> <button id="deletepost${dog.id}">Delete post</button></a>
           <h2>${dog.name}</h2>
           <figure>
               <img src="${url}/${dog.filename}" class="resp">
@@ -71,13 +72,11 @@ const getDog = async () => {
           <p>Size: ${dog.breed}</p>
           <p>Owner: ${dog.owner}</p>
           <p>Location: ${dog.location}</p>
-          <a href="../html/dog.html"><h2>GO TO PAGE</h2></a>
+          <a href="dog.html?id=${dog.id}"><h2>GO TO PAGE</h2></a>
       </li>
       `
-                   //console.log('Button id created:', button.id);
-                   const button = document.getElementById('deletepost' + dog.id);
-                   console.log('made this ', button);
-                   button.addEventListener('click', async (evt) => {
+                /**   const button = document.getElementById('deletepost' + dog.id);
+                   console.log('made this ', button);/   button.addEventListener('click', async (evt) => {
                        console.log('Eventlistener created for', button);
                        evt.preventDefault();
                        //const fd = new FormData(deleteUserForm);
@@ -102,10 +101,10 @@ const getDog = async () => {
                            window.alert('Something went wrong!');
                            window.location.replace('userpage.html');
                        }
-                   });
+                   });*/
 
                };
-               //givedogid = dog.id;
+            //givedogid = dog.id;
         });
     } catch (e) {
         console.log(e.message);
@@ -114,8 +113,6 @@ const getDog = async () => {
 getDog();
 
 
-
-modifydiv.style.display = 'none';
 logoutbutton.style.display = 'none';
 if (sessionStorage.getItem('token')) {
     loginbutton.style.display = 'none';
