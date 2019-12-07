@@ -6,6 +6,7 @@ const ul = document.getElementById('doglist');  //select ul element in index.htm
 const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
 const modifyUserForm = document.getElementById('modifyUserForm');
+const modifyUserFormbutton = document.getElementById('modifybutton');
 let currentuser;
 
 //create options to select the user on the form
@@ -46,7 +47,7 @@ const getUsers = async () => {
 getUsers();
 
 //add event listener to the delete form > try deleting the current user's info from the database
-modifyUserForm.addEventListener('submit', async (evt) => {
+modifyUserFormbutton.addEventListener('click', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(modifyUserForm);
     const fetchOptions = {

@@ -48,7 +48,7 @@
         <div class="col-8">
             <ul class="center">
                 <li class="ulhorizontal"><h4>My posts</h4></li>
-                <li class="ulhorizontal center"><a class="profilebutton" href="/NewHomes/html/createpost.html">Create a post</a></li>
+                <li class="ulhorizontal center"><button class="open-button" onclick="openForm()">Create a post</button></li>
             </ul>
 
             <ul id="mydogslist" class="doglist"></ul>
@@ -63,6 +63,27 @@
         </div>
     </div>
 </div>
+
+<div class="form-popup center" id="myForm">
+<form method="post" class="light-border form-container" id="addPostForm">
+    <h3>Add post</h3>
+    <p>Here you can create a new post of your loved friend, who is in a need of a new good home.
+        <br>Please provide all information of the dog.</p><br>
+    <p>Dog's name</p>
+    <input id="name" class="light-border center" type="text" name="name" placeholder="Name" required>
+    <p>Age</p>
+    <input id="dob" class="light-border center" type="date" name="dob" placeholder="Age" required>
+    <p>Breed</p>
+    <select id="breed" class="light-border breed-list center" name="breed"></select>
+    <p> (your username)</p>
+    <select id="owner" class="light-border users-list center" name="owner"></select>
+    <p>Location</p>
+    <input id="location" class="light-border center" type="text" name="location" placeholder="location" required>
+    <p>Add picture</p>
+    <input id="filename" class="light-border center" type="file" name="dog"><br><br>
+    <button class="light-border center send" type="submit">Create a post</button><br>
+    <button type="button" class="btn cancel center" onclick="closeForm()">Close</button>
+</form></div>
 
 <!-----------------------Footer----------------->
 
