@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcryptjs');
 const userModel = require('../models/userModel');
 
 const user_list_get = async (req, res) => {
@@ -36,6 +37,7 @@ const user_create_account = async (req, res) => {
     const params = [
         req.body.username,
         req.body.email,
+        req.body.phone,
         req.body.password,
     ];
     const response = await userModel.addUser(params);
@@ -43,17 +45,29 @@ const user_create_account = async (req, res) => {
     await res.json(user);
 };
 
-/**
-const user_update_put = async (req, res) => {
-    const params = [
-        req.body.name,
-        req.body.password,
-        req.body.id];
-    console.log('update', params);
-    const user = await userModel.updateUser(params);
+
+const user_modify = async (req, res) => {
+    const id = req.params.id
+
+    let password = "";
+    if (req.body.password) {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+        password = hash;
+    }
+
+    const data = {
+        id: id,
+        username: req.body.username,
+        password: password,
+        email: req.body.email,
+        phone: req.body.phone,   
+    }
+    console.log('update', data);
+    const user = await userModel.updateUser(data);
     await res.json(user);
 };
-*/
+
 //check if username exits or not
 const user_delete = async (req, res) => {
     const params = [req.params.id];
@@ -67,7 +81,7 @@ module.exports = {
     user_list_get,
     user_get,
     user_create_account,
-    //user_update_put,
+    user_modify,
     user_delete,
     user_get_by_name,
     user_list_get_all
