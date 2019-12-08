@@ -27,6 +27,7 @@ const dog_create_post = async (req, res) => {
         req.body.breed,
         req.body.owner,
         req.body.location,
+          req.body.description,
         req.file.filename,
         //coords
       ];

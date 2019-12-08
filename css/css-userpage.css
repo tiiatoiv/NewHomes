@@ -188,6 +188,10 @@ li {
     margin-bottom: 10px;
 }
 
+.smaller {
+    width: 80%;
+}
+
 .ulvertical {
     list-style: none;
     display: inline-block;
@@ -211,7 +215,7 @@ ul.doglist li{
 }
 
 .resp {
-    width: 100%;
+    width: 70%;
 }
 
 .infoch {
@@ -286,11 +290,11 @@ ul.doglist li{
     font-family: Roboto;
 }
 
-/* Full-width input fields */
+/* input fields */
 .form-container input[type=text], .form-container input[type=password] {
     width: 50%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
+    padding: 14px;
+    margin: 0px 0 0px 0;
     border: none;
     background: #f1f1f1;
     margin-right: auto;
@@ -307,7 +311,7 @@ ul.doglist li{
 .form-container .btn {
     background-color: #4CAF50;
     color: white;
-    padding: 16px 20px;
+    padding: 12px 20px;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -322,8 +326,8 @@ ul.doglist li{
     border: none;
     cursor: pointer;
     width: 50%;
-    border-radius: 50%;
-    margin-bottom:10px;
+    border-radius: 50px;
+    margin-bottom: 2px;
     opacity: 0.8;
 }
 
@@ -444,6 +448,15 @@ footer{
 }
 
 @media only screen and (max-width: 1000px) {
+
+    .resp {
+        width: 100%;
+    }
+
+    .smaller {
+        width: 100%;
+    }
+
     .form-popup {
         width: 80%;
     display: none;

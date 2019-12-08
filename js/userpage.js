@@ -4,31 +4,28 @@ const url = 'http://localhost:5500'; // change url when uploading to server
 
 const loginbutton = document.getElementById('loginbutton');
 const logoutbutton = document.getElementById('logoutbutton');
-const uluserinfo = document.getElementById('userinfolist');  //select ul element in index.html
-const ul = document.getElementById('mydogslist');  //select ul element in index.html
+const uluserinfo = document.getElementById('userinfolist');  //select ul element for user info
+const ul = document.getElementById('mydogslist');  //select ul element to show user's own posts
 const breed = document.getElementById('breed');
-const deleteButton = document.getElementById('deleteButton');
-const modifyButton = document.getElementById('deleteButton');
-const modifydiv = document.getElementById('modifydiv');
-let giveusername;
-let givedogid;
-const ulform = document.getElementById('doglist');  //select ul element in index.html
+let giveusername; //variable for saving username from getUser function
 const breedList = document.querySelectorAll('.breed-list');
 const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
 const addPostForm = document.getElementById('addPostForm');
 const ulmessagelist = document.getElementById('usermessagelist');
 const ulsentlist = document.getElementById('sentmessages');
-
-
-//const ul = document.getElementById('doglist');  //select ul element in index.html
 const receiverList = document.querySelectorAll('.receiver-list');
 const userListMessage = document.querySelectorAll('.users-list');
-//const size = document.getElementById('size');
 const addMessageForm = document.getElementById('addMessageForm');
-const sendmessage = document.getElementById('sendmessage');
-//const openMessageForm = document.getElementById('openMessageForm');
 
+//const deleteButton = document.getElementById('deleteButton');
+//const modifyButton = document.getElementById('deleteButton');
+//const modifydiv = document.getElementById('modifydiv');
+//let givedogid;
+//const ulform = document.getElementById('doglist');  //select ul element in index.html
+//const ul = document.getElementById('doglist');  //select ul element in index.html
+//const sendmessage = document.getElementById('sendmessage');
+//const openMessageForm = document.getElementById('openMessageForm');
 
 //Get's the user token from the login or register page
 let userinfo = sessionStorage.getItem("token");
@@ -67,6 +64,8 @@ getUser();
 //MESSAGES: fetch messages from the database and
 // build ul list elements of the logged in users messages
 const getMessage = async () => {
+    ulmessagelist.innerHTML = '';
+    ulsentlist.innerHTML = '';
     try {
         const options = {
             headers: {
@@ -102,8 +101,7 @@ const getMessage = async () => {
 };
 getMessage();
 
-
-//SEND MESSAGE
+//SEND MESSAGE FORM
 //create options to select the receiver user on the form
 const createRecUserOptions = (users) => {
     receiverList.forEach((list) => {
@@ -141,8 +139,6 @@ const getRecUsers = async () => {
     }
 };
 getRecUsers();
-
-
 
 //create options to select the user on the form => only option is the currently logged in user
 const createUserOptionsMessage = (user) => {
@@ -199,14 +195,14 @@ addMessageForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     console.log('addmessage response', json);
     window.alert('Message sent.');
-    window.location.replace('userpage.html');
+  //  window.location.replace('userpage.html');
+    getMessage();
+    //window.location.replace('userpage.html');
 });
-
-
-
 
 //MY POSTS: fetch data from the database and build ul list elements of the logged in users posts
 const getDog = async () => {
+    ul.innerHTML = '';
     try {
         const options = {
             headers: {
@@ -220,11 +216,11 @@ const getDog = async () => {
                    //    const breed = await getBreed(dog.breed);
 
                    ul.innerHTML += `
-      <li>
+      <li class="smaller center">
       <a href="deletepost.html?id=${dog.id}"> <button id="deletepost${dog.id}">Delete post</button></a>
           <h2>${dog.name}</h2>
           <figure>
-              <img src="${url}/${dog.filename}" class="resp">
+              <img src="${url}/uploads/${dog.filename}" class="resp">
           </figure>
           <p>Age: ${dog.age}</p>
           <p>Size: ${dog.breed}</p>
@@ -359,6 +355,7 @@ addPostForm.addEventListener('submit', async (evt) => {
     window.alert('Post created.');
   //  window.location.replace('userpage.html');
     getDog();
+   // window.location.replace('userpage.html');
 });
 
 //function to open the Create a Post form
