@@ -9,7 +9,7 @@ const size = document.getElementById('size');
 const addMessageForm = document.getElementById('addMessageForm');
 const sendmessage = document.getElementById('sendmessage');
 
-//create options to select the breed on the form
+//create options to select the receiver user on the form
 const createRecUserOptions = (users) => {
     receiverList.forEach((list) => {
         // clear list
@@ -24,7 +24,7 @@ const createRecUserOptions = (users) => {
     });
 };
 
-// get all the breeds for form options from the database
+// get all the users for form options from the database
 const getRecUsers = async () => {
     try {
         const options = {
@@ -49,7 +49,7 @@ getRecUsers();
 
 
 
-//create options to select the user on the form
+//create options to select the user on the form => only option is the currently logged in user
     const createUserOptions = (user) => {
         userList.forEach((list) => {
             // clear list
@@ -86,8 +86,7 @@ getRecUsers();
     };
     getUsers();
 
-    //add event listener to the form > post info to the database when submitted
-    //and create a new dog
+//SEND MESSAGE: add event listener to the form > post message to the database when submitted
 addMessageForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
    // const fd = new FormData(addMessageForm);
@@ -105,5 +104,5 @@ addMessageForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     console.log('addmessage response', json);
     window.alert('Message sent.');
-   // getDog();
+    window.location.replace('userpage.html');
 });

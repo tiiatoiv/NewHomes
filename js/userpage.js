@@ -54,9 +54,8 @@ const getUser = async () => {
 };
 getUser();
 
-
-
-//build ul list elements of the logged in users messages
+//MESSAGES: fetch messages from the database and
+// build ul list elements of the logged in users messages
 const getMessage = async () => {
     try {
         const options = {
@@ -64,11 +63,10 @@ const getMessage = async () => {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/message', options);    //fetch all the dogs from the database
+        const response = await fetch(url + '/message', options);
         const messages = await response.json();
         messages.forEach(async (message) => {
-            if (message.receiver === giveusername) {         //if the dog's owner matches to the logged in user > show it on the userpage
-                //    const breed = await getBreed(dog.breed);
+            if (message.receiver === giveusername) {   //if the messages receiver matches to the logged in user, show the message on the userpage
 
                 ulmessagelist.innerHTML += `
       <li class="light-border">
@@ -85,9 +83,7 @@ const getMessage = async () => {
 };
 getMessage();
 
-
-
-//build ul list elements of the logged in users posts
+//MY POSTS: fetch data from the database and build ul list elements of the logged in users posts
 const getDog = async () => {
     try {
         const options = {
@@ -95,7 +91,7 @@ const getDog = async () => {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/dog', options);    //fetch all the dogs from the database
+        const response = await fetch(url + '/dog', options);
         const dogs = await response.json();
         dogs.forEach(async (dog) => {
                if (dog.owner === giveusername) {         //if the dog's owner matches to the logged in user > show it on the userpage
@@ -124,7 +120,7 @@ const getDog = async () => {
 };
 getDog();
 
-
+//if log out button is pressed, remove token and log user out
 logoutbutton.addEventListener('click', async (evt) => {
     evt.preventDefault();
     try {
@@ -139,7 +135,7 @@ logoutbutton.addEventListener('click', async (evt) => {
         // remove token
         sessionStorage.removeItem('token');
         alert('You have been logged out. See you next time!');
-        // show/hide forms + cats
+        //show/hid logout/login button
         logoutbutton.style.display = 'none';
         loginbutton.style.display = 'block';
         window.location.replace('index.html');
@@ -149,9 +145,8 @@ logoutbutton.addEventListener('click', async (evt) => {
     }
 });
 
-//create a post form
-
-//create options to select the breed on the form
+//CREATE NEW POST FORM:
+// create options to select the breed on the form
 const createBreedOptions = (breeds) => {
     breedList.forEach((list) => {
         // clear list
@@ -194,8 +189,7 @@ const createUserOptions = (user) => {
     userList.forEach((list) => {
         // clear list
         list.innerHTML = '';
-        // users.forEach((user) => {
-        // create options with DOM methods
+
         const option = document.createElement('option');
         option.innerHTML = user.username;
         option.classList.add('light-border');
@@ -226,8 +220,7 @@ const getUsers = async () => {
 };
 getUsers();
 
-//add event listener to the form > post info to the database when submitted
-//and create a new dog
+//add event listener to the form > post info to the database when submitted and create a new dog
 addPostForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addPostForm);
@@ -242,22 +235,20 @@ addPostForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     console.log('add response', json);
     window.alert('Post created.');
-    window.location.replace('userpage.html');
-    // getDog();
+  //  window.location.replace('userpage.html');
+    getDog();
 });
 
-
-
-
-//function to open the create a post form
+//function to open the Create a Post form
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
-//close form
+//Close Create a Post form
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
+//show/hid logout/login button based on if user is logged in or not
 logoutbutton.style.display = 'none';
 if (sessionStorage.getItem('token')) {
     loginbutton.style.display = 'none';
