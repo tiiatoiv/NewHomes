@@ -28,10 +28,15 @@
         </section>
         
         <aside>
-            <form action="/users/1" method="PUT">
+            <form id="editform">
+                <input type="hidden" name="id" />
                 <label>
                     Username:<br>
                     <input type="text" name="username"/>
+                </label>
+                <label>
+                    Password (empty = no change):<br>
+                    <input type="text" name="password"/>
                 </label>
                 <label>
                     Phone:<br>
