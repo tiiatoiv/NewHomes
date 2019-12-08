@@ -17,6 +17,7 @@ const breedList = document.querySelectorAll('.breed-list');
 const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
 const addPostForm = document.getElementById('addPostForm');
+const ulmessagelist = document.getElementById('usermessagelist');
 
 
 //Get's the user token from the login or register page
@@ -53,6 +54,39 @@ const getUser = async () => {
 };
 getUser();
 
+
+
+//build ul list elements of the logged in users messages
+const getMessage = async () => {
+    try {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/message', options);    //fetch all the dogs from the database
+        const messages = await response.json();
+        messages.forEach(async (message) => {
+            if (message.receiver === giveusername) {         //if the dog's owner matches to the logged in user > show it on the userpage
+                //    const breed = await getBreed(dog.breed);
+
+                ulmessagelist.innerHTML += `
+      <li class="light-border">
+          <h2>Message from: ${message.sender}</h2>
+          <p>Message: ${message.message}</p>
+      </li>
+      `
+            };
+            //givedogid = dog.id;
+        });
+    } catch (e) {
+        console.log(e.message);
+    };
+};
+getMessage();
+
+
+
 //build ul list elements of the logged in users posts
 const getDog = async () => {
     try {
@@ -81,34 +115,6 @@ const getDog = async () => {
           <a href="dog.html?id=${dog.id}"><h2>GO TO PAGE</h2></a>
       </li>
       `
-                /**   const button = document.getElementById('deletepost' + dog.id);
-                   console.log('made this ', button);/   button.addEventListener('click', async (evt) => {
-                       console.log('Eventlistener created for', button);
-                       evt.preventDefault();
-                       //const fd = new FormData(deleteUserForm);
-                       const fetchOptions = {
-                           method: 'DELETE',
-                           headers: {
-                               'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-                           },
-                           //  body: fd,
-                       };
-                       //if user delete success, remove the session token, alert the user and redirect to the index.html
-                       //if error when deleting (mostly happens if user has post's, alerts user and redirects to the userpage.html
-                       try {
-                           console.log("Im trying to delete dog with id: ", dog.id);
-                           const response = await fetch(url + '/dog/' + dog.id, fetchOptions);
-                           const json = await response.json();
-                           console.log('postdelete response', json);
-                           //   sessionStorage.removeItem('token');
-                           window.location.replace('userpage.html');
-                           window.alert('Post has been deleted.');
-                       } catch (e) {
-                           window.alert('Something went wrong!');
-                           window.location.replace('userpage.html');
-                       }
-                   });*/
-
                };
             //givedogid = dog.id;
         });

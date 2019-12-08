@@ -36,19 +36,13 @@
 
     <!------------Create a New Post Form--------------->
 <div class="col-6">
-    <form method="post" class="light-border" id="addPostForm">
-        <h4>Dog's name</h4>
-        <input id="name" class="light-border center" type="text" name="name" placeholder="Name" required>
-        <h4>Age</h4>
-        <input id="dob" class="light-border center" type="date" name="dob" placeholder="Age" required>
-        <h4>Breed</h4>
-        <select id="breed" class="light-border breed-list center" name="breed"></select>
-        <h4>Owner (your username)</h4>
-        <select id="owner" class="light-border users-list center" name="owner"></select>
-        <h4>Location</h4>
-        <input id="location" class="light-border center" type="text" name="location" placeholder="location" required>
-        <h4>Add picture</h4>
-        <input id="filename" class="light-border center" type="file" name="dog"><br>
+    <form method="post" class="light-border" id="addMessageForm">
+        <h4>Sender (your username)</h4>
+        <select id="sender" class="light-border users-list center" name="sender"></select>
+        <h4>Receiver</h4>
+        <select id="receiver" class="light-border receiver-list center" name="receiver"></select>
+        <h4>Message</h4>
+        <input id="message" class="light-border center" type="text" name="message" placeholder="message" required>
         <button class="light-border center" type="submit">Save</button>
     </form></div></div></div>
 
@@ -87,6 +81,7 @@
     </div>
 
 </footer>
-<script src="../js/createpost.js"></script>
+<script src="../js/createmessage.js"></script>
+<script src="../js/serialize.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ const dogRoute = require('./routes/dogRoute');
 const userRoute = require('./routes/userRoute');
 const breedRoute = require('./routes/breedRoute');
 const authRoute = require('./routes/authRoute');
+const messageRoute = require('./routes/messageRoute');
 
 app.use(cors());
 app.use(express.json());   //for parsing application/json
@@ -33,6 +34,7 @@ app.use('/dog', passport.authenticate(['jwt', 'anonymous'], {session: false}), d
 app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/breed', passport.authenticate(['jwt', 'anonymous'], {session: false}), breedRoute);
 app.use('/auth', authRoute);
+app.use('/message', passport.authenticate('jwt', {session: false}), messageRoute);
 //app.use('/dog', dogRoute);
 //app.use('/user', userRoute);
 //app.use('/breed', breedRoute);
