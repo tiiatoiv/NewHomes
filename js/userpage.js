@@ -18,6 +18,16 @@ const userList = document.querySelectorAll('.users-list');
 const size = document.getElementById('size');
 const addPostForm = document.getElementById('addPostForm');
 const ulmessagelist = document.getElementById('usermessagelist');
+const ulsentlist = document.getElementById('sentmessages');
+
+
+//const ul = document.getElementById('doglist');  //select ul element in index.html
+const receiverList = document.querySelectorAll('.receiver-list');
+const userListMessage = document.querySelectorAll('.users-list');
+//const size = document.getElementById('size');
+const addMessageForm = document.getElementById('addMessageForm');
+const sendmessage = document.getElementById('sendmessage');
+//const openMessageForm = document.getElementById('openMessageForm');
 
 
 //Get's the user token from the login or register page
@@ -75,6 +85,15 @@ const getMessage = async () => {
       </li>
       `
             };
+
+            if (message.sender === giveusername) {
+                ulsentlist.innerHTML += `
+      <li class="light-border">
+          <h2>Message to: ${message.sender}</h2>
+          <p>Message: ${message.message}</p>
+      </li>
+      `
+            }
             //givedogid = dog.id;
         });
     } catch (e) {
@@ -82,6 +101,109 @@ const getMessage = async () => {
     };
 };
 getMessage();
+
+
+//SEND MESSAGE
+//create options to select the receiver user on the form
+const createRecUserOptions = (users) => {
+    receiverList.forEach((list) => {
+        // clear list
+        list.innerHTML = '';
+        users.forEach((user) => {
+            // create options with DOM methods
+            const option = document.createElement('option');
+            option.innerHTML = user.username;
+            option.classList.add('light-border');
+            list.appendChild(option);
+        });
+    });
+};
+
+// get all the users for form options from the database
+const getRecUsers = async () => {
+    try {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        try {
+            const response = await fetch(url + '/user/all', options);
+            const users = await response.json();
+            createRecUserOptions(users);
+        } catch (e) {
+            console.log(e.message);
+        }
+        ;
+
+    } catch (e) {
+        console.log(e.message);
+    }
+};
+getRecUsers();
+
+
+
+//create options to select the user on the form => only option is the currently logged in user
+const createUserOptionsMessage = (user) => {
+    userListMessage.forEach((list) => {
+        // clear list
+        list.innerHTML = '';
+        // users.forEach((user) => {
+        // create options with DOM methods
+        const option = document.createElement('option');
+        option.innerHTML = user.username;
+        option.classList.add('light-border');
+        list.appendChild(option);
+    });
+};
+
+// set/fetch the only possible owner option on the form to be the currently logged in user
+const getUsersForMessage = async () => {
+    try {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        try {
+            const response = await fetch(url + '/user', options);
+            const user = await response.json();
+            createUserOptionsMessage(user);
+        } catch (e) {
+            console.log(e.message);
+        }
+        ;
+    } catch (e) {
+        console.log(e.message);
+    }
+    ;
+};
+getUsersForMessage();
+
+//SEND MESSAGE: add event listener to the form > post message to the database when submitted
+addMessageForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    // const fd = new FormData(addMessageForm);
+    const data = serializeJson(addMessageForm);
+    console.log('This is about to be sent: ', data);
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify(data),
+    };
+    const response = await fetch(url + '/message', fetchOptions);
+    const json = await response.json();
+    console.log('addmessage response', json);
+    window.alert('Message sent.');
+    window.location.replace('userpage.html');
+});
+
+
+
 
 //MY POSTS: fetch data from the database and build ul list elements of the logged in users posts
 const getDog = async () => {
@@ -246,6 +368,15 @@ function openForm() {
 //Close Create a Post form
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
+}
+
+//function to open the Send a Message form
+function messageFormOpen() {
+    document.getElementById("myMessageForm").style.display = "block";
+}
+//Close Create a Post form
+function messageFormClose() {
+    document.getElementById("myMessageForm").style.display = "none";
 }
 
 //show/hid logout/login button based on if user is logged in or not
