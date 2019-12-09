@@ -11,7 +11,7 @@ router.post('/register',
     [
         body('username', 'Minimum 3 characters').isLength({min: 3}).exists(),
         body('email', 'Email is not valid').isEmail().not().isEmpty().normalizeEmail(),
-        body('phone', 'Phone should be in format').isMobilePhone().optional(),
+        body('phone', 'Phone should be in format').optional(),
         body('password', 'Minimum 5 characters').not().isEmpty().isLength({min: 5}),
         body('password-retype', 'Passwords not match').custom((value, {req}) => (value === req.body.password)),
         sanitizeBody('name').escape(),

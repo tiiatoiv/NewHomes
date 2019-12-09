@@ -340,8 +340,8 @@ footer{
     width: 100%;
     text-align: left;
     font-size: 10px;
-    position: fixed;
-    bottom: 0;
+  /*  position: fixed;
+    bottom: 0;*/
     z-index: 0;
     background-color: #FFB6C1;
 }
