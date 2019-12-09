@@ -17,6 +17,8 @@ const ulsentlist = document.getElementById('sentmessages');
 const receiverList = document.querySelectorAll('.receiver-list');
 const userListMessage = document.querySelectorAll('.users-list');
 const addMessageForm = document.getElementById('addMessageForm');
+const postbutton = document.getElementById('postbutton');
+const userpage = document.getElementById('userpage');
 
 //const deleteButton = document.getElementById('deleteButton');
 //const modifyButton = document.getElementById('deleteButton');
@@ -57,7 +59,6 @@ const getUser = async () => {
     catch (e) {
         console.log(e.message);
     };
-   // return user.username;
 };
 getUser();
 
@@ -88,12 +89,11 @@ const getMessage = async () => {
             if (message.sender === giveusername) {
                 ulsentlist.innerHTML += `
       <li class="light-border">
-          <h2>Message to: ${message.sender}</h2>
+          <h2>Message to: ${message.receiver}</h2>
           <p>Message: ${message.message}</p>
       </li>
       `
             }
-            //givedogid = dog.id;
         });
     } catch (e) {
         console.log(e.message);
@@ -108,7 +108,7 @@ const createRecUserOptions = (users) => {
         // clear list
         list.innerHTML = '';
         users.forEach((user) => {
-            // create options with DOM methods
+            // create options
             const option = document.createElement('option');
             option.innerHTML = user.username;
             option.classList.add('light-border');
@@ -146,7 +146,7 @@ const createUserOptionsMessage = (user) => {
         // clear list
         list.innerHTML = '';
         // users.forEach((user) => {
-        // create options with DOM methods
+        // create options
         const option = document.createElement('option');
         option.innerHTML = user.username;
         option.classList.add('light-border');
@@ -180,7 +180,6 @@ getUsersForMessage();
 //SEND MESSAGE: add event listener to the form > post message to the database when submitted
 addMessageForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    // const fd = new FormData(addMessageForm);
     const data = serializeJson(addMessageForm);
     console.log('This is about to be sent: ', data);
     const fetchOptions = {
@@ -195,9 +194,7 @@ addMessageForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     console.log('addmessage response', json);
     window.alert('Message sent.');
-  //  window.location.replace('userpage.html');
     getMessage();
-    //window.location.replace('userpage.html');
 });
 
 //MY POSTS: fetch data from the database and build ul list elements of the logged in users posts
@@ -213,7 +210,6 @@ const getDog = async () => {
         const dogs = await response.json();
         dogs.forEach(async (dog) => {
                if (dog.owner === giveusername) {         //if the dog's owner matches to the logged in user > show it on the userpage
-                   //    const breed = await getBreed(dog.breed);
 
                    ul.innerHTML += `
       <li class="smaller center">
@@ -230,7 +226,6 @@ const getDog = async () => {
       </li>
       `
                };
-            //givedogid = dog.id;
         });
     } catch (e) {
         console.log(e.message);
@@ -270,7 +265,7 @@ const createBreedOptions = (breeds) => {
         // clear list
         list.innerHTML = '';
         breeds.forEach((breed) => {
-            // create options with DOM methods
+            // create options
             const option = document.createElement('option');
             option.innerHTML = breed.type;
             option.classList.add('light-border');
@@ -353,9 +348,7 @@ addPostForm.addEventListener('submit', async (evt) => {
     const json = await response.json();
     console.log('add response', json);
     window.alert('Post created.');
-  //  window.location.replace('userpage.html');
     getDog();
-   // window.location.replace('userpage.html');
 });
 
 //function to open the Create a Post form
@@ -377,8 +370,10 @@ function messageFormClose() {
 }
 
 //show/hid logout/login button based on if user is logged in or not
-logoutbutton.style.display = 'none';
+
 if (sessionStorage.getItem('token')) {
     loginbutton.style.display = 'none';
     logoutbutton.style.display = 'block';
+    postbutton.style.display = 'block';
+    userpage.style.display= 'block';
 }
