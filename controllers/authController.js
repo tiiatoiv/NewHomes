@@ -41,6 +41,7 @@ const register = async (req,res,next) => {
         const params = [
             req.body.username,
             req.body.email,
+            req.body.phone,
             hash  //save hash instead of the actual password
         ];
         if (await userModel.addUser(params)){

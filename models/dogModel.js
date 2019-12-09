@@ -55,7 +55,7 @@ const getMyDogs = async () => {
   const addDog = async (params) =>{  //user adds their dog
     try {
       const [rows] = await promisePool.execute(
-          'INSERT INTO dog (name, dob, breed, owner, location, filename) VALUES (?,?,?,?,?,?);',
+          'INSERT INTO dog (name, dob, breed, owner, location, description, filename) VALUES (?,?,?,?,?,?,?);',
           params,
       );
       return rows;

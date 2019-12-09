@@ -21,7 +21,8 @@
             <li><a href="info.html">FAQ (info)</a></li>
         </ul>
     </nav>
-    <a href="#"><button>Sign Out</button> </a>
+    <a href="login.html" id="loginbutton"><button>Sign In</button> </a>
+    <a href="#" id="logoutbutton"><button>Sign Out</button> </a>
 </header>
 <!------------------White body part-------------->
 <div class="topmargin">
@@ -32,8 +33,8 @@
             <h4>My profile</h4><br><br>
         <div class="userborder"><br>
             <ul>
-            <li class="ulhorizontal"><a class="profilebutton" href="#">Edit profile</a></li>
-            <li class="ulhorizontal"><a class="profilebutton" href="#">Delete profile</a></li>
+            <li class="ulhorizontal"><a id="modifyButton" class="profilebutton" href="modifyuser.html">Edit profile</a></li>
+            <li class="ulhorizontal"><a id="deleteButton" class="profilebutton" href="deleteuser.html">Delete profile</a></li>
             </ul><br>
             <p>Logged in:</p>
 
@@ -42,12 +43,27 @@
             </ul>
 
         </div>
+            <br><br>
+            <h4>My messages</h4><br>
+            <div class="userborder"><br>
+                <button class="profilebutton" onclick="messageFormOpen()">Send Message</button><br><br><br>
+                <h2>Received messages</h2>
+                <ul id="usermessagelist">
+
+
+                </ul><br>
+                <h2>Sent messages</h2>
+                <ul id="sentmessages"></ul>
+
+            </div>
+
+
         </div>
 <!----------------------My posts-------------->
         <div class="col-8">
             <ul class="center">
                 <li class="ulhorizontal"><h4>My posts</h4></li>
-                <li class="ulhorizontal center"><a class="profilebutton" href="createpost.html">Create a post</a></li>
+                <li class="ulhorizontal center"><button class="open-button" onclick="openForm()">Create a post</button></li>
             </ul>
 
             <ul id="mydogslist" class="doglist"></ul>
@@ -62,6 +78,44 @@
         </div>
     </div>
 </div>
+<!--Form to Create post-->
+<div class="form-popup center" id="myForm">
+<form method="post" class="light-border form-container" id="addPostForm">
+    <h3>Add post</h3>
+    <p>Here you can create a new post of your loved friend,<br> who is in a need of a new good home.
+        <br>Please provide all necessary information of the dog<br> in the description field. (NOT ADDED YET)</p><br>
+    <p>Dog's name</p>
+    <input id="name" class="light-border center" type="text" name="name" placeholder="Name" required>
+    <p>Age</p>
+    <input id="dob" class="light-border center" type="date" name="dob" placeholder="Age" required>
+    <p>Breed</p>
+    <select id="breed" class="light-border breed-list center" name="breed"></select>
+    <p> (your username)</p>
+    <select id="owner" class="light-border users-list center" name="owner"></select>
+    <p>Location</p>
+    <input id="location" class="light-border center" type="text" name="location" placeholder="location" required>
+    <p>Description</p>
+    <input id="description" class="light-border center" type="text" name="description" placeholder="Write something about your dog..." required>
+    <p>Add picture</p>
+    <input id="filename" class="light-border center" type="file" name="dog"><br><br>
+    <button class="light-border center send" type="submit">Create a post</button><br>
+    <button type="button" class="btn cancel center" onclick="closeForm()">Close</button>
+</form></div>
+
+
+<!--Form to Send message-->
+<div class="messageform-popup center" id="myMessageForm">
+    <form method="post" class="light-border form-container" id="addMessageForm">
+        <h3>Send a Message</h3><br>
+        <p>Sender (your username)</p>
+        <select id="sender" class="light-border users-list center" name="sender"></select>
+        <p>Receiver</p>
+        <select id="receiver" class="light-border receiver-list center" name="receiver"></select>
+        <p>Message</p>
+        <input id="message" class="light-border center" type="text" name="message" placeholder="message" required><br>
+        <button class="light-border center send" type="submit">Send</button><br>
+        <button type="button" class="btn cancel center" onclick="messageFormClose()">Close</button>
+    </form></div>
 
 <!-----------------------Footer----------------->
 
@@ -100,5 +154,7 @@
 
 </footer>
 <script src="../js/userpage.js"></script>
+<script src="../js/serialize.js"></script>
+
 </body>
 </html>

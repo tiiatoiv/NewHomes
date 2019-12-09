@@ -47,6 +47,8 @@ const getUserAnyone = async (params) => {
         return {error: 'error in database query'};
     }
 };
+
+//get a single user info from database
 const getUserByName = async (params) => {
     try {
         const [rows] = await promisePool.execute(
@@ -60,11 +62,14 @@ const getUserByName = async (params) => {
         return {error: 'error in database query'};
     }
 };
+
 //add a new user into database
 const addUser = async (params) => {
+
+    console.log("registering", params);
     try {
         const [rows] = await promisePool.execute(
-            'INSERT INTO users (username, email, password) VALUES (?, ?, ?);',
+            'INSERT INTO users (username, email, phone, password) VALUES (?, ?, ?, ?);',
             params,
         );
         return rows;
@@ -75,17 +80,30 @@ const addUser = async (params) => {
 };
 
 //update users info
-/**const updateUser = async (params) => {
-    try {
-        const [rows] = await promisePool.execute(
-            'UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?;',
-            params);
-        return rows;
+const updateUser = async (user) => {
+
+    if (user.password){
+        try {
+            const [rows] = await promisePool.execute(
+                'UPDATE users SET username = ?, email = ?,phone = ?, password = ? WHERE id = ?;',
+                [user.username, user.email, user.phone, user.password, user.id]);
+            return rows;
+        }
+        catch (e) {
+            console.log('error', e.message);
+        }
+    } else {
+        try {
+            const [rows] = await promisePool.execute(
+                'UPDATE users SET username = ?, email = ?, phone = ? WHERE id = ?;',
+                [user.username, user.email, user.phone, user.id]);
+            return rows;
+        }
+        catch (e) {
+            console.log('error', e.message);
+        }
     }
-    catch (e) {
-        console.log('error', e.message);
-    }
-}; */
+};
 
 //delete user from database
 const deleteUser = async (params) => {
@@ -129,6 +147,7 @@ module.exports = {
     getUser,
     getUserAnyone,
     addUser,
+    updateUser,
     deleteUser,
     getUserLogin,
     checkUser,
