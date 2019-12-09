@@ -21,7 +21,7 @@ header > li, a, button {
 header {
     display: flex;
     justify-content: space-between;
-    align-items: centers;
+    align-items: center;
     padding: 10px 10px ;
     background-color: #FFB6C1;
     z-index: 2;
@@ -92,6 +92,7 @@ button:hover {
     float: left;
     padding: 20px;
     height: 300px;
+    font-family: Roboto;
 }
 
 
