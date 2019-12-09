@@ -1,5 +1,6 @@
 'use strict';
 const url = 'http://localhost:5500';
+//const url = 'http://10.114.32.144:3000';
 const logUserForm = document.getElementById('logUserForm');
 
 console.log("log user form", logUserForm);
@@ -20,6 +21,7 @@ logUserForm.addEventListener('submit', async (e) => {
     } else {
       // save token
         sessionStorage.setItem('token', json.token);
+        sessionStorage.setItem('user', JSON.stringify(json.user));
         window.location.replace('userpage.html');
     }
   });
