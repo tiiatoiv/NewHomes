@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <!--------------------Navigation bar----------->
@@ -17,39 +15,35 @@
     <nav>
         <ul class='nav-links'>
             <li><a href="index.html">Home</a></li>
-            <li id="userpage"><a href="userpage.html">Userpage</a></li>
             <li><a href="info.html">FAQs</a></li>
         </ul>
     </nav>
-    <a id="loginbutton" class="button" href="login.html"><button>Sign In</button> </a>
-    <a id="logoutbutton" class="button" href="login.html"><button>Sign Out</button> </a>
+    <a id="loginbutton" class="button nav-button" href="login.html"><button>Sign In</button> </a>
+    <a href="#" id="logoutbutton"><button>Sign Out</button> </a>
+
 
 </header>
 <!-----------------------Search----------->
-<div class="row" style="min-height: 450px">
+<div class="row">
     <aside class="container">
         <h1>Filter </h1>
-        <div class="search" id="searchForm">
+        <form id="searchForm">
             <h3>Breed</h3>
-            <select class="light-border breed-list" name="Breed">
-                
-            </select>
-        </div>
-        <div class="search">
+            <select id="breedSearch" class="search-border breed-list" name="breed"></select>
+            
             <h3>Size</h3>
-            <select id ="size" class="light-border">
+            <select id ="sizeSearch" class="search-border" name="size">
                 <option value="Small">Small</option>
                 <option value="Medium">Medium</option>
                 <option value="Large">Large</option>
             </select>
-        </div>
-        <div class="search">
+            
             <h3>Location</h3>
-            <input class="light-border" type="text" name="location" placeholder="City">
-        </div>
-        <div id="search-button" class="search">
-            <Button class="search-button">Search</Button>
-        </div>
+            <input id ="locationSearch" class="search-border" type="text" name="location" placeholder="City">
+
+            <h3></h3>
+            <Button id="search-button" class="search-button" type="submit" style="margin-top: 10px">Search</Button>
+        </form>
     </aside>
     <!-----------------------Dogs----------------->
     <main class="container">
@@ -59,16 +53,14 @@
 </div>
 <!-----------------------Footer----------------->
 <footer class="footer-distributed">
-
     <div class="footer-left">
         <h2 style="font-family: 'Permanent Marker', cursive">NewHomes</h2>
         <p class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">Terms and Conditions</a>
+            <a href="index.html">Home</a>
+            <a href="#">FAQs</a>
         </p>
         <p class="footer-company-name">© 2019 NewHomes.Co</p>
     </div>
-
     <div class="footer-center">
         <div>
             <i class="fa fa-map-marker"></i>
@@ -83,7 +75,6 @@
             <p>support@newhomes.com</p>
         </div>
     </div>
-
     <div class="footer-right">
         <h3>Like us on</h3>
         <a href="#"><i class="fa fa-facebook"></i></a>

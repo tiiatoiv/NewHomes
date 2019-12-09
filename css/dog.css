@@ -38,7 +38,7 @@ p {
     display: none;
 }
 
-#email, #phone, #fb, #insta {
+#email, #phone, #fb, #twit {
     margin-top: auto;
     text-align: center;
     padding: 9px 25px;
@@ -54,7 +54,7 @@ p {
     color: white;
 }
 
-#insta {
+#twit {
     background-color: #fcaf45;
     color: white;
 }
@@ -75,6 +75,8 @@ section article {
     background:rgb(255,182,193,0.3);
     margin: 10px;
 }
+
+
 
 #share-buttons {
     margin: 10px 0;
@@ -99,4 +101,3 @@ section article {
         width: 100%;
     }
 }
-

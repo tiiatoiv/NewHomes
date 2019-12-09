@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dog.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -19,17 +17,17 @@
         <nav>
             <ul class='nav-links'>
                 <li><a href="index.html">Home</a></li>
-                <li id="userpage"><a href="index.html">Userpage</a></li>
-                <li><a href="info.html">FAQs</a></li>
+                <li id="userpage"><a href="userpage.html">Userpage</a></li>
+                <li><a href="#">FAQs</a></li>
             </ul>
         </nav>  
-        <a id="loginbutton" class="button" href="login.html"><button>Sign In</button> </a>
+        <a id="loginbutton" class="button" href="../html/login.html"><button>Sign In</button> </a>
         <a id="logoutbutton" class="button" href="#"><button>Sign Out</button> </a>
     </header>
 
     <main>
         <picture>
-            <img id="img" alt="cute doggy picture">
+            <img id="img" alt= "cute doggy picture">
         </picture>
     
         <section>
@@ -39,6 +37,7 @@
                         <p>Name: <span id="dog-name"></span></p> 
                         <p>Date of birth: <span id="dob"></span></p>
                         <p>Location: <span id="location"></span></p>
+                        <p>Description: <span id="description"></span></p>
                         <button id="like">Like ❤️</button> 
                 </article>
 
@@ -51,6 +50,7 @@
                         <a  id="phone">Call owner 📞</a> 
                 </article>
         </section>
+    
     </main>
     <div id="share-buttons">
         <a id="fb">Share on facebook</a>

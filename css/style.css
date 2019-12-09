@@ -217,6 +217,10 @@ footer{
     .row {
         min-height: 1000px;
     }
+
+    .locationSearch {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 1000px) {

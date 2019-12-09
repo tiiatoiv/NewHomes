@@ -50,7 +50,7 @@ const getDog =  (dogs) => {
     // create li with DOM methods
     const breed =  await getBreed(dog.breed);
     const img = document.createElement('img');
-    img.src = url + '/uploads/' + dog.filename;
+    img.src = url + '/thumbnails/' + dog.filename;
     img.alt = dog.name;
     img.classList.add('resp');  
 

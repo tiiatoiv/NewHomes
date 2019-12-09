@@ -1,6 +1,8 @@
 'use strict';
 
 const dogModel = require('../models/dogModel');
+const resize = require('../utils/resize');
+
 //const resize = require('../utils/resize');
 //const imageMeta = require('../utils/imageMeta');
 
@@ -21,6 +23,10 @@ const dog_create_post = async (req, res) => {
     console.log('not authenticated?', req.user);
   } else {
     try{
+       await resize.makeThumbnail(req.file.path,
+        'thumbnails/' + req.file.filename,
+        {width: 160, height: 160});
+
       const params = [
         req.body.name,
         req.body.dob,
