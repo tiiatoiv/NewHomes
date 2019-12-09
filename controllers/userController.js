@@ -25,7 +25,6 @@ const user_get = async (req, res) => {
     await res.json(user[0]);
 };
 
-
 const user_get_by_name = async (req, res) => {
     const params = [req.params.username];
     const user = await userModel.getUserByName(params);

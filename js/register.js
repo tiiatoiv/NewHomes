@@ -1,12 +1,13 @@
 'use strict';
 
 const url = 'http://localhost:5500'; // change url when uploading to server
-
 // select existing html elements
 const name = document.getElementById('username');
 const password = document.getElementById('password');
 const retypePassword = document.getElementById('password-retype');
 const addUserForm = document.getElementById('addUserForm');
+
+
 
 //check if 2 passwords match
 const validatePassword = () => {
@@ -18,10 +19,6 @@ const validatePassword = () => {
 }
 password.onchange = validatePassword;
 retypePassword.onkeyup = validatePassword;
-
-const checkExistName = () => {
-
-}
 
 //asign event to submit button 
 addUserForm.addEventListener('submit', async (e) => {
@@ -40,30 +37,32 @@ addUserForm.addEventListener('submit', async (e) => {
     // save token
     sessionStorage.setItem('token', json.token); 
     window.location.replace('userpage.html');
-
   });
 
-
-/*const getUser = async (id) => {
-    const response = await fetch(url + '/user/' + id);
-    const user = await response.json();
-    return user;
-};*/
-
-/*const checkUsername = async () => {
-    try {
-        const response = await fetch(url + '/user');
-        const usernames = await response.json();
-        usernames.forEach ( username => {
-            if(name.value === username.username){
-                name.setCustomValidity("Username has been taken!");
-            }else{
-                name.setCustomValidity(" ");
-            }
-        });
-    } catch (e) {
-      console.log(e.message);
+name.addEventListener('input', async (e) => {
+  const input = e.target.value;
+  const data = {username: input};
+  console.log('name check', input);
+  const fetchOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  };
+  try{
+  const exist = await fetch(url + '/auth/checkuser', fetchOptions);
+  console.log('55',exist);
+  const checked = await exist.json();
+  console.log('57',checked);
+    if(!checked.available){
+      name.setCustomValidity('Username is taken.');
+    }else{
+      name.setCustomValidity('');
     }
-};
-name.checkUsername;
-*/
+  } catch (e) {
+    console.log('somestrings', e.message);
+    name.setCustomValidity('');
+  }
+}); 
+

@@ -23,18 +23,6 @@ const getDog = async () => {
     }catch (e) {
         console.log(e.message);
       }
-
-
-  /*const dog = {
-    name: 'Mimi', 
-    breed: 'poodle',
-    dob: '12/12/2018',
-    id: 0,
-    owner: 'Lily',
-    location: 'Helsinki',
-    filename: 'dog.jpg'
-  }*/
-
     
 }
 
@@ -54,13 +42,6 @@ const getOwner = async (name) => {
         console.log(e.message);
         document.getElementById("main").innerHTML = e.message;
       }
-
-    
-    /*const owner = {
-        name: 'Lily',
-        phone: '+358 40 5582316',
-        email: 'ienw@metropolia.fi'
-    }*/
 
     document.getElementById('owner-name').innerHTML = owner.username;
     document.getElementById('owner-phone').innerHTML = owner.phone;

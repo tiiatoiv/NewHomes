@@ -5,15 +5,13 @@ const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const messageController = require('../controllers/messageController');
 
-router.get('/', messageController.message_list_get);  //get all the dog on main page
+router.get('/', messageController.message_list_get);  //get all messages
 
-router.get('/:id', messageController.message_get);     //get specific dog
+router.get('/:id', messageController.message_get);     //get specific message
 
 
-router.post('/', messageController.message_create_post);
+router.post('/', messageController.message_create_post); //send messages
 
-//router.put('/', dogController.dog_update_put);  //modified dog
-
-router.delete('/:id', messageController.message_delete);  //delete dog
+router.delete('/:id', messageController.message_delete);  //delete message
 
 module.exports = router;

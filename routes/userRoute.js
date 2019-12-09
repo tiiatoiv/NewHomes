@@ -11,9 +11,11 @@ router.get('/all', userController.user_list_get_all); //get all of the users
 
 router.get('/name/:username', userController.user_get_by_name); // get user by username
 
+router.get('/name/:username', userController.user_get_by_name); // get user by username
+
 router.get('/:id', userController.user_get); //get certain user
 
-router.post('/', userController.user_create_account); //put a new user into database
+router.post('/', userController.user_create_account);
 
 router.delete('/:id', userController.user_delete);
 

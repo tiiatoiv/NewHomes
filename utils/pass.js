@@ -4,11 +4,9 @@ const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const passportJWT = require('passport-jwt');
 const JWTStrategy = passportJWT.Strategy;
-const toUnnamed = require('named-placeholders');
 const ExtractJWT = passportJWT.ExtractJwt; //allows only requests with valid tokens to access some special routes needing authentication
 const userModel = require('../models/userModel');
 const AnonymousStrategy = require('passport-anonymous').Strategy;
-
 
 //anonymous for get
 passport.use(new AnonymousStrategy());
@@ -21,7 +19,7 @@ passport.use(new Strategy(
       try {
         const [user] = await userModel.getUserLogin(params);
         console.log('Local strategy', user); // result is binary row
-    
+
         if (user === undefined) {
           console.log(username);
           return done(null, false, {message: 'Incorrect credential'});

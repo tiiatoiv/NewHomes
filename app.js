@@ -10,16 +10,15 @@ const dogRoute = require('./routes/dogRoute');
 const userRoute = require('./routes/userRoute');
 const breedRoute = require('./routes/breedRoute');
 const authRoute = require('./routes/authRoute');
+const bodyParser = require('body-parser');
 const messageRoute = require('./routes/messageRoute');
 
 app.use(cors());
 app.use(express.json());   //for parsing application/json
 app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-form-urlencoded
+
 app.use('/uploads', express.static('uploads'));
-//app.use('/thumbnails', express.static('thumbnails'));
-app.use('/html', express.static('html'));
-app.use('/js', express.static('js'));
-app.use('/css', express.static('css'));
+
 
 /*if(process.env.SERVER === 'dev_localhost') {
     require('./secure/localhost')(app);
@@ -34,8 +33,6 @@ app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 app.use('/breed', passport.authenticate(['jwt', 'anonymous'], {session: false}), breedRoute);
 app.use('/auth', authRoute);
 app.use('/message', passport.authenticate('jwt', {session: false}), messageRoute);
-//app.use('/dog', dogRoute);
-//app.use('/user', userRoute);
-//app.use('/breed', breedRoute);
+
 app.listen(port, () => console.log(`App listens on port ${port}!`));
 
