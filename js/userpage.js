@@ -233,31 +233,6 @@ const getDog = async () => {
 };
 getDog();
 
-//if log out button is pressed, remove token and log user out
-logoutbutton.addEventListener('click', async (evt) => {
-    evt.preventDefault();
-    try {
-        const options = {
-            headers: {
-                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-            },
-        };
-        const response = await fetch(url + '/auth/logout', options);
-        const json = await response.json();
-        console.log(json);
-        // remove token
-        sessionStorage.removeItem('token');
-        alert('You have been logged out. See you next time!');
-        //show/hid logout/login button
-        logoutbutton.style.display = 'none';
-        loginbutton.style.display = 'block';
-        window.location.replace('index.html');
-    }
-    catch (e) {
-        console.log(e.message);
-    }
-});
-
 //CREATE NEW POST FORM:
 // create options to select the breed on the form
 const createBreedOptions = (breeds) => {
@@ -371,7 +346,36 @@ function messageFormClose() {
 
 
 //show/hid logout/login button based on if user is logged in or not
+logoutbutton.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    try {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/auth/logout', options);
+        const json = await response.json();
+        console.log(json);
+        // remove token
+        sessionStorage.removeItem('token');
+        alert('You have been logged out. See you next time!');
+        //show/hid logout/login button
+        logoutbutton.style.display = 'none';
+        loginbutton.style.display = 'block';
+        window.location.replace('index.html');
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+});
 
+logoutbutton.style.display = 'none';
+postbutton.style.display = 'none';
+userpage.style.display= 'none';
+//show/hid logout/login button based on if user is logged in or not
+logoutbutton.style.display = 'none';
+userpage.style.display= 'none';
 if (sessionStorage.getItem('token')) {
     loginbutton.style.display = 'none';
     logoutbutton.style.display = 'block';

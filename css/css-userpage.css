@@ -14,6 +14,7 @@ header > li, a, button {
     color: black;
     text-decoration: none;
     font-family: 'Archivo', sans-serif;
+    display: inline;
 }
 
 .nav-brand {
@@ -116,9 +117,7 @@ button:hover {
 .col-12 {width: 100%;}
 
 .column {
-    width: 30%;
-    margin-top: 6px;
-    padding: 20px;
+
 }
 
 .userborder {
@@ -252,9 +251,6 @@ ul.doglist li{
     border: none;
     cursor: pointer;
     opacity: 0.8;
-    /*position: fixed;
-    bottom: 23px;
-    right: 28px;*/
     width: 280px;
 }
 
@@ -264,8 +260,6 @@ ul.doglist li{
     position: fixed;
     bottom: 0;
     left: 50%;
-   /* right: 15px;
-    border: 3px solid #f1f1f1;*/
     z-index: 9;
 }
 
@@ -283,6 +277,11 @@ ul.doglist li{
     padding: 10px;
     background-color: white;
     font-family: Roboto;
+}
+
+.flow {
+    max-height: 100vh;
+    overflow: auto;
 }
 
 .form-container input[type=text], .form-container input[type=password] {
@@ -334,19 +333,16 @@ ul.doglist li{
 
 /*----------Footer-----------*/
 footer{
-    position: fixed;
-    bottom: 0;
-}
 
-@media (max-height:800px){
-    footer { position: static; }
-    header { padding-top:20px; }
 }
 
 .footer-distributed{
-    box-sizing: border-box;
+    width: 100%;
     text-align: left;
-    font:16px;
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
     background-color: #FFB6C1;
 }
 
@@ -395,7 +391,6 @@ footer{
     margin:0;
 }
 .footer-distributed .footer-center div {
-    margin: none;
 }
 
 .footer-distributed .footer-right {
@@ -404,11 +399,27 @@ footer{
 
 @media (max-width: 880px) {
 
+    header { padding-top:20px; }
+
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .footer-distributed{
+        width: 100%;
+        text-align: left;
+        font-size: 10px;
+        position: static;
+        bottom: 0;
+        z-index: 0;
+        background-color: #FFB6C1;
+    }
+
     .footer-distributed .footer-left,
     .footer-distributed .footer-center,
     .footer-distributed .footer-right{
         display: block;
-        width: 100%;
         margin-bottom: 40px;
         text-align: center;
     }
@@ -420,6 +431,11 @@ footer{
 }
 
 @media only screen and (max-width: 1000px) {
+
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
 
     .resp {
         width: 100%;
@@ -444,9 +460,17 @@ footer{
     background-color: white;
     font-family: Roboto;
     }
+        footer { position: static; }
+        header { padding-top:20px; }
 }
 
 @media only screen and (max-width: 700px) {
+
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+
     .form-popup {
         width: 100%;
         display: none;
@@ -470,5 +494,17 @@ footer{
         padding: 10px;
         background-color: white;
         font-family: Roboto;
+    }
+
+
+        footer { position: static; }
+        header { padding-top:20px; }
+
+
+    .footer-distributed{
+        box-sizing: border-box;
+        text-align: left;
+        font-size:16px;
+        background-color: #FFB6C1;
     }
 }

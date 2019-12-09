@@ -6,6 +6,9 @@ const loginbutton = document.getElementById('loginbutton');
 const logoutbutton = document.getElementById('logoutbutton');
 const userpage = document.getElementById('userpage');
 
+logoutbutton.style.display = 'none';
+userpage.style.display= 'none';
+
 //if log out button is pressed, remove token and log user out
 logoutbutton.addEventListener('click', async (evt) => {
     evt.preventDefault();
@@ -31,12 +34,8 @@ logoutbutton.addEventListener('click', async (evt) => {
     }
 });
 
-logoutbutton.style.display = 'none';
-postbutton.style.display = 'none';
-userpage.style.display= 'none';
 //show/hid logout/login button based on if user is logged in or not
-logoutbutton.style.display = 'none';
-userpage.style.display= 'none';
+
 if (sessionStorage.getItem('token')) {
     loginbutton.style.display = 'none';
     logoutbutton.style.display = 'block';

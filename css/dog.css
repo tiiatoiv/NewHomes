@@ -17,6 +17,19 @@ img {
     height: auto;
 }
 
+h1 {
+    font-size: 30px ;
+    font-family: Roboto;
+}
+
+h2 {
+    font-family: Roboto;
+}
+
+p {
+    font-family: Roboto;
+}
+
 #like{
     margin-top: auto;
 }

@@ -8,8 +8,12 @@ const breedSearch = document.getElementById('breedSearch');
 const sizeSearch = document.getElementById('sizeSearch');
 const locationSearch = document.getElementById('locationSearch');
 const search = document.getElementById('searchForm');
-const loginButton = document.getElementById('loginbutton');
-const logoutButton = document.getElementById('logoutbutton');
+const loginbutton = document.getElementById('loginbutton');
+const logoutbutton = document.getElementById('logoutbutton');
+const userpage = document.getElementById('userpage');
+
+logoutbutton.style.display = 'none';
+userpage.style.display= 'none';
 
 //create option for search-select element
 const createBreedOptions = (breeds) => {
@@ -124,6 +128,38 @@ const getBreed = async (id) => {
   }
 };
 
+//show/hid logout/login button based on if user is logged in or not
+logoutbutton.addEventListener('click', async (evt) => {
+    evt.preventDefault();
+    try {
+        const options = {
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+            },
+        };
+        const response = await fetch(url + '/auth/logout', options);
+        const json = await response.json();
+        console.log(json);
+        // remove token
+        sessionStorage.removeItem('token');
+        alert('You have been logged out. See you next time!');
+        //show/hid logout/login button
+        logoutbutton.style.display = 'none';
+        loginbutton.style.display = 'block';
+        window.location.replace('index.html');
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+});
+
+//show/hid logout/login button based on if user is logged in or not
+if (sessionStorage.getItem('token')) {
+    loginbutton.style.display = 'none';
+    logoutbutton.style.display = 'block';
+    userpage.style.display= 'block';
+}
+
 search.addEventListener('submit', async (e) => {
   e.preventDefault();
   console.log("clcik");
@@ -139,32 +175,3 @@ search.addEventListener('submit', async (e) => {
   console.log(e.message);
   }
 });
-
-logoutbutton.addEventListener('click', async (evt) => {
-  evt.preventDefault();
-  try {
-      const options = {
-          headers: {
-              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-          },
-      };
-      const response = await fetch(url + '/auth/logout', options);
-      const json = await response.json();
-      console.log(json);
-      // remove token
-      sessionStorage.removeItem('token');
-      //show/hid logout/login button
-      logoutButton.style.display = 'none';
-      loginButton.style.display = 'block';
-      window.location.replace('index.html');
-  }
-  catch (e) {
-      console.log(e.message);
-  }
-});
-
-logoutButton.style.display = 'none';
-if (sessionStorage.getItem('token')) {
-    loginButton.style.display = 'none';
-    logoutButton.style.display = 'block';
-};
