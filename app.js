@@ -10,14 +10,14 @@ const dogRoute = require('./routes/dogRoute');
 const userRoute = require('./routes/userRoute');
 const breedRoute = require('./routes/breedRoute');
 const authRoute = require('./routes/authRoute');
-const bodyParser = require('body-parser');
 const messageRoute = require('./routes/messageRoute');
 
 app.use(cors());
 app.use(express.json());   //for parsing application/json
 app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-form-urlencoded
+app.use(express.static('uploads'));
 
-app.use('/uploads', express.static('uploads'));
+app.use('/thumbnails', express.static('thumbnails'));
 
 
 /*if(process.env.SERVER === 'dev_localhost') {

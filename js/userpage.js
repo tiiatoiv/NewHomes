@@ -220,7 +220,7 @@ const getDog = async () => {
       <a href="deletepost.html?id=${dog.id}"> <button id="deletepost${dog.id}">Delete post</button></a>
           <h2>${dog.name}</h2>
           <figure>
-              <img src="${url}/uploads/${dog.filename}" class="resp">
+              <img src="${url}/thumbnails/${dog.filename}" class="resp">
           </figure>
           <p>Age: ${dog.age}</p>
           <p>Size: ${dog.breed}</p>
