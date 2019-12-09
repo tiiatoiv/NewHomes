@@ -23,7 +23,6 @@ const login = (req,res) => {
           // generate a signed son web token with the contents of user object and return it in the response
         const token = jwt.sign(user, 'project2019');
         return res.json({user, token});
-          
         });
       })
       (req, res);
@@ -43,36 +42,37 @@ const register = async (req,res,next) => {
             req.body.username,
             req.body.email,
             hash  //save hash instead of the actual password
-        ]
+        ];
         if (await userModel.addUser(params)){
             next();
         } else {
             res.status(400).json({error: 'register error'});
-        }
+        }       
     }
-}
+};
 
 const logout = (req, res) => {
     req.logout();
     res.json({message: 'logout'});
 };
 
-const user_check = async (req, res) => {
+/*const user_check = async (req, res) => {
+    console.log(req.body);
     const params = [req.body.username];
-    console.log('check', params);
+    console.log('user-check', params);
     const user = await userModel.checkUser(params);
-    if(user != null){
+    if(user != undefined){
         await res.json(user);
         return true;
     } else {
         return false;
     }
-};
+};*/
 
 
 module.exports = {
     login,
     logout,
     register,
-    user_check
+   // user_check
   };

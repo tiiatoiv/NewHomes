@@ -7,6 +7,8 @@ const userController = require('../controllers/userController');
 
 router.get('/', userController.user_list_get);  //get all of the users
 
+router.get('/name/:username', userController.user_get_by_name); // get user by username
+
 router.get('/:id', userController.user_get); //get certain user
 
 router.post('/', userController.user_create_account);

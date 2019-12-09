@@ -39,20 +39,21 @@ addUserForm.addEventListener('submit', async (e) => {
     window.location.replace('userpage.html');
   });
 
-name.addEventListener('input', async (e) => {
+/*name.addEventListener('input', async (e) => {
   const input = e.target.value;
-  console.log(input);
+  const data = serializeJson({username: input});
+  console.log('name check', input);
   const fetchOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(input)
+    body: JSON.stringify(data)
   };
   const exist = await fetch(url + '/auth/checkUser', fetchOptions);
     if(exist)
       name.setCustomValidity('Username is taken.');
     else
       name.setCustomValidity('');
-  });   
+});  */
 

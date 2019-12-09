@@ -19,6 +19,12 @@ const user_get = async (req, res) => {
     await res.json(user[0]);
 };
 
+const user_get_by_name = async (req, res) => {
+    const params = [req.params.username];
+    const user = await userModel.getUserByName(params);
+    await res.json(user[0]);
+}
+
 const user_create_account = async (req, res) => {
     console.log("account",req.body);
     const params = [
@@ -47,4 +53,5 @@ module.exports = {
     user_create_account,
     //user_update_put,
     user_delete,
+    user_get_by_name
 };

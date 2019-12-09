@@ -28,7 +28,6 @@ const dog_create_post = async (req, res) => {
         req.body.owner,
         req.body.location,
         req.file.filename,
-        //coords
       ];
       const response = await dogModel.addDog(params);
       await res.json(response);
@@ -54,7 +53,7 @@ const dog_delete = async (req, res) => {   //user or admin deletes dog
   }
 };
 
-const dog_update_put = async(req,res) => {  //user or admin updates dog
+const dog_update_put = async (req,res) => {  //user or admin updates dog
   if(req.user === undefined){
     window.location.replace('login.html');
   } else {
@@ -69,11 +68,27 @@ const dog_update_put = async(req,res) => {  //user or admin updates dog
   }
 }
 
+const get_dog_search = async (req,res) => {
+  console.log('search', req.body);
+  try {
+    const params = [
+      req.body.breed,
+      req.body.size,
+      req.body.location,
+    ];
+    const response = await dogModel.searchDog(params);
+    await res.json(response);
+  } catch (e) {
+     console.log(e.message);
+  }
+}
+
 module.exports = {
     dog_list_get,
     dog_mylist_get,
     dog_create_post,
     dog_get,
     dog_delete,
-    dog_update_put
+    dog_update_put,
+    get_dog_search
   };

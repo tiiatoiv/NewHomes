@@ -47,7 +47,19 @@ const getUserAnyone = async (params) => {
         return {error: 'error in database query'};
     }
 };
-
+const getUserByName = async (params) => {
+    try {
+        const [rows] = await promisePool.execute(
+            'SELECT email, phone, id, username FROM users WHERE username = ?;',
+            //'SELECT username, email FROM users WHERE users.id = ?',
+            params,
+        );
+        return rows;
+    } catch (e) {
+        console.log('error', e.message);
+        return {error: 'error in database query'};
+    }
+};
 //add a new user into database
 const addUser = async (params) => {
     try {
@@ -105,7 +117,7 @@ const checkUser = async (params) => {
         console.log(params);
         const [rows] = await promisePool.execute(
             'SELECT username FROM users WHERE username = ?',
-            params);            
+            params); 
         return rows;
     } catch (e) {
         console.log('error', e.message);
@@ -119,5 +131,6 @@ module.exports = {
     addUser,
     deleteUser,
     getUserLogin,
-    checkUser
+    checkUser,
+    getUserByName
 };

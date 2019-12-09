@@ -15,37 +15,30 @@
     <nav>
         <ul class='nav-links'>
             <li><a href="index.html">Home</a></li>
-            <li><a href="userpage.html">Userpage</a></li>
             <li><a href="info.html">FAQs</a></li>
         </ul>
     </nav>
-    <a class="button" href="login.html"><button>Sign In</button> </a>
+    <a class="button nav-button" href="login.html"><button>Sign In</button> </a>
 </header>
 <!-----------------------Search----------->
-<div class="row" style="min-height: 450px">
+<div class="row">
     <aside class="container">
         <h1>Filter </h1>
-        <div class="search">
+        <form id="searchForm">
             <h3>Breed</h3>
-            <select class="light-border breed-list" name="Breed">
-                
-            </select>
-        </div>
-        <div class="search">
+            <select id="breedSearch" class="search-border breed-list" name="breed"></select>
+            
             <h3>Size</h3>
-            <select id ="size" class="light-border">
+            <select id ="sizeSearch" class="search-border" name="size">
                 <option value="Small">Small</option>
                 <option value="Medium">Medium</option>
                 <option value="Large">Large</option>
             </select>
-        </div>
-        <div class="search">
+            
             <h3>Location</h3>
-            <input class="light-border" type="text" name="location" placeholder="City">
-        </div>
-        <div id="search-button" class="search">
-            <Button class="search-button">Search</Button>
-        </div>
+            <input id ="locationSearch" class="search-border" type="text" name="location" placeholder="City">
+            <Button  id="search-button" class="search-button" type="submit" style="margin-top: 15px">Search</Button>
+        </form>
     </aside>
     <!-----------------------Dogs----------------->
     <main class="container">
