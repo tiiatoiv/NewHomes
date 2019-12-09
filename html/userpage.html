@@ -11,25 +11,24 @@
 </head>
 
 <body>
-<!--------------------Navigation bar----------->
+<!---Navigation bar--->
 <header>
     <a class="nav-brand" href="#top"><b>NewHomes</b></a>
     <nav>
         <ul class='nav-links'>
             <li><a href="index.html">Home</a></li>
-            <li><a href="userpage.html">Profile</a></li>
+            <li id="userpage"><a href="userpage.html">Profile</a></li>
             <li><a href="info.html">FAQ (info)</a></li>
         </ul>
     </nav>
     <a href="login.html" id="loginbutton"><button>Sign In</button> </a>
     <a href="#" id="logoutbutton"><button>Sign Out</button> </a>
 </header>
-<!------------------White body part-------------->
+<!---White body part--->
 <div class="topmargin">
-    <!--  <h1 style="text-align: center">Profile</h1> -->
     <div class="row">
-        <!-----------------------User info----------------->
-        <div class="col-4"><br>
+        <!---User info--->
+        <div class="col-4 column"><br>
             <h4>My profile</h4><br><br>
         <div class="userborder"><br>
             <ul>
@@ -39,7 +38,6 @@
             <p>Logged in:</p>
 
             <ul id="userinfolist">
-
             </ul>
 
         </div>
@@ -49,41 +47,36 @@
                 <button class="profilebutton" onclick="messageFormOpen()">Send Message</button><br><br><br>
                 <h2>Received messages</h2>
                 <ul id="usermessagelist">
-
-
                 </ul><br>
                 <h2>Sent messages</h2>
                 <ul id="sentmessages"></ul>
 
             </div>
-
-
         </div>
-<!----------------------My posts-------------->
-        <div class="col-8">
+<!---My posts--->
+        <div class="col-8 column">
             <ul class="center">
-                <li class="ulhorizontal"><h4>My posts</h4></li>
-                <li class="ulhorizontal center"><button class="open-button" onclick="openForm()">Create a post</button></li>
+                <li class=" center"><h4>My posts</h4></li>
+                <li id="postbutton" class="center"><button class="open-button center" onclick="openForm()">Create a post</button></li>
             </ul>
 
             <ul id="mydogslist" class="doglist"></ul>
 
-            <!----------------------Liked posts , nothing yet here-------------->
+            <!---Liked posts , nothing yet here--->
               <ul class="center">
                 <li class="ulhorizontal"><h4>Liked dogs</h4></li>
             </ul>
             <ul>
                 <p>No posts yet... Here will be created a list of liked posts from database.</p></ul>
-
         </div>
     </div>
 </div>
-<!--Form to Create post-->
+<!---Form to Create post--->
 <div class="form-popup center" id="myForm">
-<form method="post" class="light-border form-container" id="addPostForm">
+<form method="post" class="light-border form-container flow" id="addPostForm">
     <h3>Add post</h3>
     <p>Here you can create a new post of your loved friend,<br> who is in a need of a new good home.
-        <br>Please provide all necessary information of the dog<br> in the description field. (NOT ADDED YET)</p><br>
+        <br>Please provide all necessary information of the dog<br> in the description field.</p><br>
     <p>Dog's name</p>
     <input id="name" class="light-border center" type="text" name="name" placeholder="Name" required>
     <p>Age</p>
@@ -101,9 +94,7 @@
     <button class="light-border center send" type="submit">Create a post</button><br>
     <button type="button" class="btn cancel center" onclick="closeForm()">Close</button>
 </form></div>
-
-
-<!--Form to Send message-->
+<!---Form to Send message--->
 <div class="messageform-popup center" id="myMessageForm">
     <form method="post" class="light-border form-container" id="addMessageForm">
         <h3>Send a Message</h3><br>
@@ -116,9 +107,7 @@
         <button class="light-border center send" type="submit">Send</button><br>
         <button type="button" class="btn cancel center" onclick="messageFormClose()">Close</button>
     </form></div>
-
-<!-----------------------Footer----------------->
-
+<!---Footer--->
 <footer class="footer-distributed">
 
     <div class="footer-left">
@@ -151,10 +140,8 @@
         <a href="#"><i class="fa fa-youtube"></i></a>
         <a href="#"><i class="fa fa-instagram"></i></a>
     </div>
-
 </footer>
 <script src="../js/userpage.js"></script>
 <script src="../js/serialize.js"></script>
-
 </body>
 </html>
