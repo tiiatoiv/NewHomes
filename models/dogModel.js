@@ -84,7 +84,7 @@ const searchDog = async (params) => { //for searching favorite dog
       'SELECT dog.*, dogtypes.size FROM dog JOIN dogtypes ON dog.breed = dogtypes.type WHERE dog.breed = ? OR dogtypes.size = ? OR dog.location = ?',
       params,
   );
-    console.log(row);
+    console.log(rows);
     return rows;
   } catch (e) {
     console.log('error', e.message);

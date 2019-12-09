@@ -376,6 +376,7 @@ function messageFormClose() {
     document.getElementById("myMessageForm").style.display = "none";
 }
 
+
 //show/hid logout/login button based on if user is logged in or not
 logoutbutton.style.display = 'none';
 if (sessionStorage.getItem('token')) {

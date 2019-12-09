@@ -16,11 +16,9 @@ const messageRoute = require('./routes/messageRoute');
 app.use(cors());
 app.use(express.json());   //for parsing application/json
 app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-form-urlencoded
-app.use('/uploads', express.static('uploads'));
 
 app.use('/uploads', express.static('uploads'));
-app.use('/js', express.static('js'));
-app.use('/css', express.static('css'));
+
 
 /*if(process.env.SERVER === 'dev_localhost') {
     require('./secure/localhost')(app);

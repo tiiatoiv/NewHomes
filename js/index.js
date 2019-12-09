@@ -8,6 +8,8 @@ const breedSearch = document.getElementById('breedSearch');
 const sizeSearch = document.getElementById('sizeSearch');
 const locationSearch = document.getElementById('locationSearch');
 const search = document.getElementById('searchForm');
+const loginButton = document.getElementById('loginbutton');
+const logoutButton = document.getElementById('logoutbutton');
 
 //create option for search-select element
 const createBreedOptions = (breeds) => {
@@ -130,10 +132,39 @@ search.addEventListener('submit', async (e) => {
   const location = locationSearch.value;
   console.log(breed, size, location);
   try {
-    const response = await fetch(url + '/dog/search/' + breed + size + location);
+    const response = await fetch(url + '/dog/search/' + breed + '/' + size +'/'+ location);
     const dogs = await response.json();
     getDog(dogs);
   } catch (e) {
   console.log(e.message);
   }
 });
+
+logoutbutton.addEventListener('click', async (evt) => {
+  evt.preventDefault();
+  try {
+      const options = {
+          headers: {
+              'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+          },
+      };
+      const response = await fetch(url + '/auth/logout', options);
+      const json = await response.json();
+      console.log(json);
+      // remove token
+      sessionStorage.removeItem('token');
+      //show/hid logout/login button
+      logoutButton.style.display = 'none';
+      loginButton.style.display = 'block';
+      window.location.replace('index.html');
+  }
+  catch (e) {
+      console.log(e.message);
+  }
+});
+
+logoutButton.style.display = 'none';
+if (sessionStorage.getItem('token')) {
+    loginButton.style.display = 'none';
+    logoutButton.style.display = 'block';
+};

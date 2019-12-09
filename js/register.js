@@ -39,9 +39,9 @@ addUserForm.addEventListener('submit', async (e) => {
     window.location.replace('userpage.html');
   });
 
-/*name.addEventListener('input', async (e) => {
+name.addEventListener('input', async (e) => {
   const input = e.target.value;
-  const data = serializeJson({username: input});
+  const data = {username: input};
   console.log('name check', input);
   const fetchOptions = {
     method: 'POST',
@@ -50,10 +50,19 @@ addUserForm.addEventListener('submit', async (e) => {
     },
     body: JSON.stringify(data)
   };
-  const exist = await fetch(url + '/auth/checkUser', fetchOptions);
-    if(exist)
+  try{
+  const exist = await fetch(url + '/auth/checkuser', fetchOptions);
+  console.log('55',exist);
+  const checked = await exist.json();
+  console.log('57',checked);
+    if(!checked.available){
       name.setCustomValidity('Username is taken.');
-    else
+    }else{
       name.setCustomValidity('');
-});  */
+    }
+  } catch (e) {
+    console.log('somestrings', e.message);
+    name.setCustomValidity('');
+  }
+}); 
 

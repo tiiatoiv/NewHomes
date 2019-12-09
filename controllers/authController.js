@@ -57,23 +57,23 @@ const logout = (req, res) => {
     res.json({message: 'logout'});
 };
 
-/*const user_check = async (req, res) => {
+const user_check = async (req, res) => {
     console.log(req.body);
     const params = [req.body.username];
     console.log('user-check', params);
     const user = await userModel.checkUser(params);
-    if(user != undefined){
-        await res.json(user);
-        return true;
+    console.log('somestring', user.length);
+    if(user.length != 0){
+        await res.json({available:false});
     } else {
-        return false;
+        res.json({available: true});
     }
-};*/
+};
 
 
 module.exports = {
     login,
     logout,
     register,
-   // user_check
+    user_check
   };

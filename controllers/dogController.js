@@ -70,12 +70,12 @@ const dog_update_put = async (req,res) => {  //user or admin updates dog
 }
 
 const get_dog_search = async (req,res) => {
-  console.log('search', req.body);
+  console.log('search', req.params);
   try {
     const params = [
-      req.body.breed,
-      req.body.size,
-      req.body.location,
+      req.params.breed,
+      req.params.size,
+      req.params.location,
     ];
     const response = await dogModel.searchDog(params);
     await res.json(response);
