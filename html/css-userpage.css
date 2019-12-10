@@ -243,6 +243,7 @@ ul.doglist li{
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    font-family: Roboto;
 }
 
 .profilebutton:hover {
@@ -258,6 +259,7 @@ ul.doglist li{
     cursor: pointer;
     opacity: 0.8;
     width: 280px;
+    font-family: Roboto;
 }
 
 /* The popup form hidden by default */
