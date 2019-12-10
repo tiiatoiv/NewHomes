@@ -1,7 +1,7 @@
 'use strict';
 
 //const url = 'http://localhost:5500';
-const url = '/newhomes/';
+const url = '/app/';
 
 const loginbutton = document.getElementById('loginbutton');
 const logoutbutton = document.getElementById('logoutbutton');
