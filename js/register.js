@@ -1,7 +1,7 @@
 'use strict';
 
 //const url = 'http://localhost:5500'; // change url when uploading to server
-const url = '/app/';
+const url = '/newhomes/';
 
 // select existing html elements
 const name = document.getElementById('username');

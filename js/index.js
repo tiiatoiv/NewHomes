@@ -1,7 +1,7 @@
 'use strict';
 
 //const url = 'http://localhost:5500'; // change url when uploading to server
-const url = '/app/';
+const url = '/newhomes/';
 
 const ul = document.getElementById('doglist');  //select ul element in index.html
 const breedList = document.querySelectorAll('.breed-list');
@@ -82,7 +82,7 @@ const getDog =  (dogs) => {
     viewButton.addEventListener('click', () => {  //when clicked, redirect to its page
       const id = dog.id;
       try{
-          window.location.assign('/app/html/dog.html?id=' + id);
+          window.location.assign('/newhomes/html/dog.html?id=' + id);
       } catch (e) {
           console.log(e.message);
       }

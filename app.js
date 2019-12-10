@@ -18,6 +18,9 @@ app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-
 app.use(express.static('uploads'));
 
 app.use('/thumbnails', express.static('thumbnails'));
+app.use(express.static('html'));
+app.use(express.static('css'));
+app.use(express.static('js'));
 
 
 /*if(process.env.SERVER === 'dev_localhost') {

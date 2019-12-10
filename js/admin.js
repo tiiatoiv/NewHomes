@@ -1,7 +1,7 @@
 'use strict';
 
 //const url = 'http://localhost:5500';
-const url = '/app/';
+const url = '/newhomes/';
 
 
 const user = JSON.parse(sessionStorage.getItem('user'));
