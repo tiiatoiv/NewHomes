@@ -29,7 +29,7 @@ const getMyDogs = async () => {
   const getDog = async (params) => {   //get dog to specific page
     try {
       const [rows] = await promisePool.execute(
-          'SELECT * FROM dog WHERE id = ?;',
+          'SELECT dog.*,dogtypes.size FROM dog JOIN dogtypes ON dog.breed = dogtypes.type AND dog.id = ?;',
           params,
       );
       return rows;

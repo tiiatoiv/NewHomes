@@ -22,6 +22,7 @@ const getDog = async () => {
         console.log(dog);
         document.getElementById('breed').innerHTML = dog.breed;
         document.getElementById('dog-name').innerHTML = dog.name;
+        document.getElementById('dog-size').innerHTML = dog.size;
         document.getElementById('dob').innerHTML = new Date(dog.dob).toLocaleDateString();
         document.getElementById('location').innerHTML = dog.location;
         document.getElementById('description').innerHTML = dog.description;
@@ -30,6 +31,15 @@ const getDog = async () => {
         console.log(e.message);
       }
     
+}
+
+//only show the onwer details if the user is logged in
+//otherwise show "log in to see more"
+const user = sessionStorage.getItem('token');
+if(!user){
+    document.getElementById('notuser').style.display = "flex";
+}else{
+    document.getElementById('isuser').style.display = "flex";
 }
 
 const getOwner = async (name) => {
