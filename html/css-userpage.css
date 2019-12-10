@@ -40,6 +40,7 @@ header {
 .nav-links li {
     padding: 0px 20px;
     float: left;
+    font-family: Roboto;
 }
 
 .nav-links li a {
@@ -185,6 +186,7 @@ li {
     list-style: none;
     text-align: center;
     margin-bottom: 10px;
+    font-family: Roboto;
 }
 
 .smaller {
