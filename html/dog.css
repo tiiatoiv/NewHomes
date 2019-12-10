@@ -5,7 +5,8 @@ main{
 }
 
 picture{
-    width: 40%;
+    min-width: 40%;
+    max-width: 40%;
 }
 
 img {
