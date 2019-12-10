@@ -1,6 +1,7 @@
 'use strict';
 
-const url = 'http://localhost:5500'; // change url when uploading to server
+//const url = 'http://localhost:5500'; // change url when uploading to server
+const url = '/app/';
 
 const loginbutton = document.getElementById('loginbutton');
 const logoutbutton = document.getElementById('logoutbutton');

@@ -1,6 +1,7 @@
 'use strict';
 
-const url = 'http://localhost:5500'; // change url when uploading to server
+//const url = 'http://localhost:5500'; // change url when uploading to server
+const url = '/app/';
 
 const ul = document.getElementById('doglist');  //select ul element in index.html
 const receiverList = document.querySelectorAll('.receiver-list');

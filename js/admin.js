@@ -1,6 +1,9 @@
 'use strict';
 
-const url = 'http://localhost:5500';
+//const url = 'http://localhost:5500';
+const url = '/app/';
+
+
 const user = JSON.parse(sessionStorage.getItem('user'));
 console.log(user);
 if(user.admin == 0){
