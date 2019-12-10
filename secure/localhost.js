@@ -10,9 +10,9 @@ const options = {
 };
 
 module.exports = (app) => {
-    https.createServer(options, app).listen(5500);
+    https.createServer(options, app).listen(3000);
     http.createServer((req,res) =>{
         res.writeHead(301, {'Location': 'https://localhost:5500' + req.url});
         res.end();
-    }).listen(5500);
+    }).listen(3000);
 };
