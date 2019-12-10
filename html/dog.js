@@ -27,7 +27,7 @@ const getDog = async () => {
         document.getElementById('dob').innerHTML = new Date(dog.dob).toLocaleDateString();
         document.getElementById('location').innerHTML = dog.location;
         document.getElementById('description').innerHTML = dog.description;
-        document.getElementById('img').src = "../uploads/" + dog.filename;
+        document.getElementById('img').src = "/app/" + dog.filename;
     }catch (e) {
         console.log(e.message);
       }
