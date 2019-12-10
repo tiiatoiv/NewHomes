@@ -82,7 +82,7 @@ const getDog =  (dogs) => {
     viewButton.addEventListener('click', () => {  //when clicked, redirect to its page
       const id = dog.id;
       try{
-          window.location.assign('/app/html/dog.html?id=' + id);
+          window.location.assign('/app/dog.html?id=' + id);
       } catch (e) {
           console.log(e.message);
       }
