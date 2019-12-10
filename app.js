@@ -16,8 +16,9 @@ app.use(cors());
 app.use(express.json());   //for parsing application/json
 app.use(express.urlencoded({extended: true}));  //for parsing application/x-www-form-urlencoded
 app.use(express.static('uploads'));
-app.use(express.static('public'));
-
+app.use(express.static('html'));
+app.use(express.static('css'));
+app.use(express.static('js'));
 
 app.use('/thumbnails', express.static('thumbnails'));
 
