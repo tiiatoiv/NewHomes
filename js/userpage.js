@@ -21,14 +21,6 @@ const addMessageForm = document.getElementById('addMessageForm');
 const postbutton = document.getElementById('postbutton');
 const userpage = document.getElementById('userpage');
 
-//const deleteButton = document.getElementById('deleteButton');
-//const modifyButton = document.getElementById('deleteButton');
-//const modifydiv = document.getElementById('modifydiv');
-//let givedogid;
-//const ulform = document.getElementById('doglist');  //select ul element in index.html
-//const ul = document.getElementById('doglist');  //select ul element in index.html
-//const sendmessage = document.getElementById('sendmessage');
-//const openMessageForm = document.getElementById('openMessageForm');
 
 //Get's the user token from the login or register page
 let userinfo = sessionStorage.getItem("token");
