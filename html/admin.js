@@ -10,7 +10,7 @@ const userpage = document.getElementById('userpage');
 const user = JSON.parse(sessionStorage.getItem('user'));
 console.log(user);
 if(user.admin == 0){
-    window.location.replace("/html/index.html")
+    window.location.replace("/app/index.html")
 }
 const getUsers = async () => {
 //authorization headers
