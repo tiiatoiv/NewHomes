@@ -182,6 +182,10 @@ p {
     width: 50%;
 }
 
+ul {
+    font-family: Roboto;
+}
+
 li {
     list-style: none;
     text-align: center;
