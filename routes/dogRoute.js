@@ -11,8 +11,6 @@ router.get('/search/:breed/:size/:location', dogController.get_dog_search);  //g
 
 router.get('/:id', dogController.dog_get);     //get specific dog
 
-router.get('/owner', dogController.dog_mylist_get);
-
 router.post('/', upload.single('dog'), dogController.dog_create_post);
 
 router.put('/', dogController.dog_update_put);  //modified dog

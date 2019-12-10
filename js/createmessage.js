@@ -47,44 +47,38 @@ const getRecUsers = async () => {
 };
 getRecUsers();
 
-
-
 //create options to select the user on the form => only option is the currently logged in user
-    const createUserOptions = (user) => {
-        userList.forEach((list) => {
-            // clear list
-            list.innerHTML = '';
-           // users.forEach((user) => {
-                // create options with DOM methods
-                const option = document.createElement('option');
-                option.innerHTML = user.username;
-                option.classList.add('light-border');
-                list.appendChild(option);
-            });
-    };
+const createUserOptions = (user) => {
+    userList.forEach((list) => {
+    // clear list
+    list.innerHTML = '';
+    // create options with DOM methods
+    const option = document.createElement('option');
+    option.innerHTML = user.username;
+    option.classList.add('light-border');
+    list.appendChild(option);
+    });
+};
 
 // set/fetch the only possible owner option on the form to be the currently logged in user
-    const getUsers = async () => {
+const getUsers = async () => {
+    try {
+        const options = {
+        headers: {
+           'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+        },
+        };
         try {
-            const options = {
-                headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
-                },
-            };
-            try {
-                const response = await fetch(url + '/user', options);
-                const user = await response.json();
-                createUserOptions(user);
-            } catch (e) {
-                console.log(e.message);
-            }
-            ;
+            const response = await fetch(url + '/user', options);
+            const user = await response.json();
+            createUserOptions(user);
         } catch (e) {
             console.log(e.message);
         }
-        ;
-    };
-    getUsers();
+    } catch (e) {
+        console.log(e.message);
+    }};
+getUsers();
 
 //SEND MESSAGE: add event listener to the form > post message to the database when submitted
 addMessageForm.addEventListener('submit', async (evt) => {

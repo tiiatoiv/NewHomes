@@ -20,7 +20,7 @@ const validatePassword = () => {
 password.onchange = validatePassword;
 retypePassword.onkeyup = validatePassword;
 
-//asign event to submit button 
+//asign event to submit button to add users
 addUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = serializeJson(addUserForm);
@@ -39,6 +39,7 @@ addUserForm.addEventListener('submit', async (e) => {
     window.location.replace('userpage.html');
   });
 
+//check if username exists or not 
 name.addEventListener('input', async (e) => {
   const input = e.target.value;
   const data = {username: input};

@@ -14,7 +14,8 @@ const getAllBreeds = async () => {
     }
 };
 
-const getBreed = async (params) => {   //get dog to specific page
+//get specific breed of dog
+const getBreed = async (params) => {   
     try {
       const [rows] = await promisePool.execute(
           'SELECT * FROM dogtypes WHERE type = ?;',

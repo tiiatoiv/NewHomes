@@ -19,27 +19,7 @@ const getUsers = async () => {
   const users = await response.json();
   console.log(users);
 
-    /*mock data until I integrate the API
-    const users = [
-        {
-            name: 'Boi',
-            phone: '+358 40 578943',
-            email: 'boi@metrpolia.fi',
-            id: 0
-        },
-        {
-            name: 'Balabi',
-            phone: '+358 40 783783',
-            email: 'balabi@metrpolia.fi',
-            id: 1
-        },
-        {
-            name: 'Lulu',
-            phone: '+358 40 892103',
-            email: 'lulu@metrpolia.fi',
-            id: 2
-        }
-    ]*/
+  
     
 //looping through all users to display the specific user
   for (const user of users) {

@@ -6,6 +6,7 @@ const userModel = require('../models/userModel');
 const passport = require('../utils/pass'); //do the login
 const jwt = require('jsonwebtoken');
 
+//log in strategies
 const login = (req,res) => {
     passport.authenticate('local', {session: false}, (err, user, info) => {
         console.log(info);
@@ -28,6 +29,7 @@ const login = (req,res) => {
       (req, res);
 };
 
+//save username, email, phone and password under hash
 const register = async (req,res,next) => {
     const errors = validationResult(req); //require validationResult
 
@@ -45,7 +47,7 @@ const register = async (req,res,next) => {
             hash  //save hash instead of the actual password
         ];
         if (await userModel.addUser(params)){
-            next();
+            next();  //go to login step
         } else {
             res.status(400).json({error: 'register error'});
         }       
@@ -57,6 +59,7 @@ const logout = (req, res) => {
     res.json({message: 'logout'});
 };
 
+//check username and return available or not under json
 const user_check = async (req, res) => {
     console.log(req.body);
     const params = [req.body.username];

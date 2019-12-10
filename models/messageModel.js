@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 //This file contains functions to update the users table in the database
 //Fetch info, update and delete
 
-//get all users from database
+//get all messages from database
 const getAllMessages = async () => {
     try {
         const [rows] = await promisePool.execute('SELECT * FROM messages');
@@ -16,7 +16,7 @@ const getAllMessages = async () => {
     }
 };
 
-//get a single user info from database
+//get a single message from database
 const getMessage = async (params) => {
     console.log('still alive?', params);
     try {
@@ -32,7 +32,7 @@ const getMessage = async (params) => {
     }
 };
 
-//add a new user into database
+//add a new message into database
 const addMessage = async (params) => {
     try {
         const [rows] = await promisePool.execute(
@@ -46,7 +46,7 @@ const addMessage = async (params) => {
     }
 };
 
-//delete user from database
+//delete message from database
 const deleteMessage = async (params) => {
     try {
         const [rows] = await promisePool.execute(

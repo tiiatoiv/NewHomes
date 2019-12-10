@@ -16,13 +16,12 @@ const getAllUsers = async () => {
     }
 };
 
-//get a single user info from database
+//get a single user info from database and return array list
 const getUser = async (params) => {
     console.log('still alive?', params);
     try {
         const [rows] = await promisePool.execute(
             'SELECT * FROM users WHERE id = ?;',
-            //'SELECT username, email FROM users WHERE users.id = ?',
         [params],
         );
         return rows;
@@ -38,7 +37,6 @@ const getUserAnyone = async (params) => {
     try {
         const [rows] = await promisePool.execute(
             'SELECT * FROM users WHERE id = ?;',
-            //'SELECT username, email FROM users WHERE users.id = ?',
             params,
         );
         return rows;
@@ -53,7 +51,6 @@ const getUserByName = async (params) => {
     try {
         const [rows] = await promisePool.execute(
             'SELECT email, phone, id, username FROM users WHERE username = ?;',
-            //'SELECT username, email FROM users WHERE users.id = ?',
             params,
         );
         return rows;
@@ -118,6 +115,7 @@ const deleteUser = async (params) => {
     }
 };
 
+//get information of user when log in
 const getUserLogin = async (params) => {
     try {
         console.log(params);
@@ -130,6 +128,7 @@ const getUserLogin = async (params) => {
     }
   };
 
+  //check if username is already exist in database
 const checkUser = async (params) => {
     try{
         console.log(params);

@@ -2,6 +2,7 @@
 const bcrypt = require('bcryptjs');
 const userModel = require('../models/userModel');
 
+//return users when they have already log in
 const user_list_get = async (req, res) => {
     console.log('get user or users', req.user);
     if(req.user){
@@ -14,23 +15,27 @@ const user_list_get = async (req, res) => {
     }
 };
 
+//return all users
 const user_list_get_all = async (req, res) => {
     const users = await userModel.getAllUsers();
     await res.json(users);
 };
 
+//get user from id
 const user_get = async (req, res) => {
     const params = [req.params.id];
     const user = await userModel.getUserAnyone(params);
     await res.json(user[0]);
 };
 
+//get user by their username
 const user_get_by_name = async (req, res) => {
     const params = [req.params.username];
     const user = await userModel.getUserByName(params);
     await res.json(user[0]);
 }
 
+//take input from body and save user account
 const user_create_account = async (req, res) => {
     console.log("account",req.body);
     const params = [
@@ -44,7 +49,7 @@ const user_create_account = async (req, res) => {
     await res.json(user);
 };
 
-
+//take input and modify user account 
 const user_modify = async (req, res) => {
     const id = req.params.id
 
@@ -67,7 +72,7 @@ const user_modify = async (req, res) => {
     await res.json(user);
 };
 
-//check if username exits or not
+//delete user from input id
 const user_delete = async (req, res) => {
     const params = [req.params.id];
     console.log('delete', params);

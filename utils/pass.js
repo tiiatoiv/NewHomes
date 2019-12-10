@@ -6,7 +6,8 @@ const passportJWT = require('passport-jwt');
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt; //allows only requests with valid tokens to access some special routes needing authentication
 const userModel = require('../models/userModel');
-const AnonymousStrategy = require('passport-anonymous').Strategy;
+const AnonymousStrategy = require('passport-anonymous').Strategy; //for anonymous
+
 
 //anonymous for get
 passport.use(new AnonymousStrategy());

@@ -3,6 +3,7 @@ const url = 'http://localhost:5500';
 //const url = 'http://10.114.32.144:3000';
 const logUserForm = document.getElementById('logUserForm');
 
+//event listener for log in button
 console.log("log user form", logUserForm);
 logUserForm.addEventListener('submit', async (e) => {
     e.preventDefault();
