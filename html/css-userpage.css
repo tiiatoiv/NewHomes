@@ -45,6 +45,7 @@ header {
 
 .nav-links li a {
     transition: all 0.3s ease 0s;
+    font-family: Roboto;
 }
 
 .nav-links li a:hover {
@@ -190,6 +191,10 @@ li {
     list-style: none;
     text-align: center;
     margin-bottom: 10px;
+    font-family: Roboto;
+}
+
+a {
     font-family: Roboto;
 }
 
