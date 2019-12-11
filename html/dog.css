@@ -75,6 +75,7 @@ section article {
     flex-grow: 1;
     background:rgb(255,182,193,0.3);
     margin: 10px;
+    width: 50%;
 }
 
 
