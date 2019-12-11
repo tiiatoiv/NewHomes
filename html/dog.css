@@ -99,7 +99,6 @@ footer{
     width: 100%;
     text-align: left;
     font-size: 15px;
-    position: fixed;
     z-index: 0;
     background-color: #FFB6C1;
 }
