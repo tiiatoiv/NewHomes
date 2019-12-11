@@ -226,15 +226,6 @@ footer{
     footer { position: static; }
     header { padding-top:20px; }
 
-
-    aside {
-        width: 20%;
-    }
-
-    main {
-        width: 80%;
-    }
-
     .row {
         min-height: 2000px;
     }
