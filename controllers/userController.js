@@ -76,8 +76,13 @@ const user_modify = async (req, res) => {
 const user_delete = async (req, res) => {
     const params = [req.params.id];
     console.log('delete', params);
-    const user = await userModel.deleteUser(params);
-    await res.json(user);
+    try{
+        const user = await userModel.deleteUser(params);
+        await res.json(user);
+    }catch(error){
+        res.status(500).json({error})
+    }
+    
 };
 
 

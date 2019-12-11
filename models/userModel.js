@@ -104,15 +104,10 @@ const updateUser = async (user) => {
 
 //delete user from database
 const deleteUser = async (params) => {
-    try {
-        const [rows] = await promisePool.execute(
-            'DELETE FROM users WHERE id = ?;',
-            params);
-        return rows;
-    }
-    catch (e) {
-        console.log('error', e.message);
-    }
+    const [rows] = await promisePool.execute(
+        'DELETE FROM users WHERE id = ?;',
+        params);
+    return rows;
 };
 
 //get information of user when log in

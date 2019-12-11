@@ -151,7 +151,7 @@ logoutbutton.addEventListener('click', async (evt) => {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
         };
-        const response = await fetch(url + '/auth/logout', options);
+        const response = await fetch(url + 'auth/logout', options);
         const json = await response.json();
         console.log(json);
         // remove token
