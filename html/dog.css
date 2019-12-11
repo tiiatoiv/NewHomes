@@ -141,7 +141,8 @@ footer{
 
 .footer-distributed .footer-right {
     width: 30%;
-}s
+}
+
 @media (min-width: 1000px) {
     section article {
         display: flex;

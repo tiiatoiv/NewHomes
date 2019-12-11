@@ -21,7 +21,7 @@ const getUsers = async () => {
         },
       };
 //fetching all the users
-  const response = await fetch(url + '/user/all', fetchOptions);
+  const response = await fetch(url + 'user/all', fetchOptions);
   const users = await response.json();
   console.log(users);
 
@@ -53,7 +53,7 @@ const getUsers = async () => {
         console.log("deleteting user", user.id)
         try {
             //delete the user by id
-            const response = await fetch(url +  "/user/" + user.id, fetchOptions);
+            const response = await fetch(url +  "user/" + user.id, fetchOptions);
             const res = await response.json();
             console.log(res)
             location.reload();
@@ -119,7 +119,7 @@ function editUser(user) {
         console.log("updating user", user.id)
         try {
             //modify user info by id
-            const response = await fetch(url +  "/user/" + user.id, fetchOptions);
+            const response = await fetch(url +  "user/" + user.id, fetchOptions);
             const res = await response.json();
             console.log(res)
             location.reload();
