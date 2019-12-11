@@ -318,9 +318,9 @@ footer{
     .footer-distributed .footer-left,
     .footer-distributed .footer-center,
     .footer-distributed .footer-right{
-        display: block;
         margin-bottom: 40px;
         text-align: center;
+        float: left;
     }
 
     .footer-distributed .footer-center i    {
@@ -355,10 +355,4 @@ footer{
         background-color: #FFB6C1;
     }
 
-    .footer-distributed .footer-left,
-    .footer-distributed .footer-center,
-    .footer-distributed .footer-right{
-        display: inline;
-        text-align: center;
-    }
 }
