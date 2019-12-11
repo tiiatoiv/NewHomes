@@ -354,4 +354,11 @@ footer{
         font-size:16px;
         background-color: #FFB6C1;
     }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+        display: inline;
+        text-align: center;
+    }
 }
