@@ -40,10 +40,12 @@ header {
 .nav-links li {
     padding: 0px 20px;
     float: left;
+    font-family: Roboto;
 }
 
 .nav-links li a {
     transition: all 0.3s ease 0s;
+    font-family: Roboto;
 }
 
 .nav-links li a:hover {
@@ -181,10 +183,19 @@ p {
     width: 50%;
 }
 
+ul {
+    font-family: Roboto;
+}
+
 li {
     list-style: none;
     text-align: center;
     margin-bottom: 10px;
+    font-family: Roboto;
+}
+
+a {
+    font-family: Roboto;
 }
 
 .smaller {
@@ -237,6 +248,7 @@ ul.doglist li{
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    font-family: Roboto;
 }
 
 .profilebutton:hover {
@@ -252,6 +264,7 @@ ul.doglist li{
     cursor: pointer;
     opacity: 0.8;
     width: 280px;
+    font-family: Roboto;
 }
 
 /* The popup form hidden by default */
