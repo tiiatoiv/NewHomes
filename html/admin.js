@@ -21,7 +21,7 @@ const getUsers = async () => {
         },
       };
 //fetching all the users
-  const response = await fetch(url + '/user/all', fetchOptions);
+  const response = await fetch(url + 'user/all', fetchOptions);
   const users = await response.json();
   console.log(users);
 
