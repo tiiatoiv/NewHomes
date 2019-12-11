@@ -53,7 +53,7 @@ const getUsers = async () => {
         console.log("deleteting user", user.id)
         try {
             //delete the user by id
-            const response = await fetch(url +  "/user/" + user.id, fetchOptions);
+            const response = await fetch(url +  "user/" + user.id, fetchOptions);
             const res = await response.json();
             console.log(res)
             location.reload();
