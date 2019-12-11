@@ -56,7 +56,7 @@ const getUsers = async () => {
             const response = await fetch(url +  "user/" + user.id, fetchOptions);
             const res = await response.json();
             console.log(res)
-            //location.reload();
+            location.reload();
         } catch(e) {
             console.log(e);
             return false
