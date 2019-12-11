@@ -79,7 +79,7 @@ section article {
 
 
 
-@media (min-width: 1000px) {
+@media (max-width: 1000px) {
     section article {
         display: flex;
         flex-direction: column;
