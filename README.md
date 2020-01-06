@@ -23,9 +23,4 @@ Require dependencies:
     "serializejson": "^1.0.1",
     "sharp": "^0.23.4"
 
-.env: 
-    DB_HOST=10.114.32.144
-    DB_USER=root
-    DB_PASS=sacombank
-    DB_NAME=dbproject
 
